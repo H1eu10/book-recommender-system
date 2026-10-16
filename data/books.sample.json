@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "id": "demo-001",
+    "title": "The Clockwork Library",
+    "author": "Demo Author A",
+    "genres": ["fantasy", "mystery"],
+    "tags": ["libraries", "magic", "investigation"],
+    "description": "A young librarian investigates a mysterious clock hidden inside a magical library.",
+    "language": "en",
+    "pages": 240
+  },
+  {
+    "id": "demo-002",
+    "title": "Beyond the Quiet Stars",
+    "author": "Demo Author B",
+    "genres": ["science-fiction", "adventure"],
+    "tags": ["space", "exploration", "friendship"],
+    "description": "A small research crew travels beyond familiar space and discovers an unexpected signal.",
+    "language": "en",
+    "pages": 320
+  },
+  {
+    "id": "demo-003",
+    "title": "Letters from Willow Street",
+    "author": "Demo Author C",
+    "genres": ["romance", "contemporary"],
+    "tags": ["relationships", "small-town", "family"],
+    "description": "Two neighbors connect through a collection of letters and learn about their families.",
+    "language": "en",
+    "pages": 190
+  }
+]
