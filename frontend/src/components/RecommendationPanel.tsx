@@ -27,7 +27,7 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [hasSubmitted, setHasSubmitted] = useState(false)
-  const { i18n } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   const requestRef = useRef<AbortController | null>(null)
 
@@ -159,7 +159,7 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
                       clearPreviousResults()
                     }}
                   />
-                  <span>{genre}</span>
+                  <span>{t(`genres.${genre}`, { defaultValue: genre })}</span>
                 </label>
               ))}
             </div>
@@ -181,7 +181,7 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
                       clearPreviousResults()
                     }}
                   />
-                  <span>{tag}</span>
+                  <span>{t(`tags.${tag}`, { defaultValue: tag })}</span>
                 </label>
               ))}
             </div>
@@ -200,7 +200,7 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
                 <option value="">Any language</option>
                 {availableLanguages.map((value) => (
                   <option key={value} value={value}>
-                    {value.toUpperCase()}
+                    {t(`languages.${value}`, { defaultValue: value })}
                   </option>
                 ))}
               </select>
@@ -290,10 +290,15 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
                 </div>
 
                 <p className="book-meta">
-                  {book.language.toUpperCase()} ·{' '}
-                  {book.pages === null
-                    ? 'Page count unavailable'
-                    : `${book.pages} pages`}
+                  {t('library.editionLanguage', {
+                    language: t(`languages.${book.language}`, {
+                      defaultValue: book.language,
+                    }),
+                  })}
+                  {' · '}
+                  {book.pages == null
+                    ? t('library.unknownPages')
+                    : t('library.pages', { count: book.pages })}
                 </p>
               </article>
             ))}

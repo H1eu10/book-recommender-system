@@ -126,7 +126,7 @@ function App() {
                     }),
                   })}
                   {' · '}
-                  {book.pages === null
+                  {book.pages == null
                     ? t('library.unknownPages')
                     : t('library.pages', { count: book.pages })}
                 </p>
