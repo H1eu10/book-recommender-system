@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getBooks } from './services/books'
 import type { Book } from './types/book'
+import RecommendationPanel from './components/RecommendationPanel'
 import './App.css'
 
 function App() {
@@ -46,8 +47,7 @@ function App() {
         <p className="eyebrow">Book Recommendation System</p>
         <h1>Explore the library</h1>
         <p>
-          Browse our sample collection. Personalized recommendations
-          will be added next.
+          Explore the collection and discover books that match your preferences.
         </p>
       </header>
 
@@ -71,6 +71,8 @@ function App() {
 
       {!loading && !error && books.length > 0 && (
         <>
+          <RecommendationPanel books={books} />
+          <h2 className="library-heading">Library collection</h2>
           <p className="result-count">
             {books.length} books available
           </p>

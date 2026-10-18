@@ -15,8 +15,8 @@ The initial scope excludes authentication and external AI APIs, prioritizing a c
 
 ## How to run
 ### Frontend
-   cd frontend
-   npm run dev
+    cd frontend
+    npm run dev
 
 ### Backend
     cd backend
