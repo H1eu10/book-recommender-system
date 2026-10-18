@@ -30,12 +30,6 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 ## How to run
 
-### Frontend
-   cd frontend
-   npm run dev
 
-### Backend
-    cd backend
-    .\.venv\Scripts\fastapi.exe dev app/main.py
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.

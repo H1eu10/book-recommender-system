@@ -12,3 +12,12 @@ Project: Book Recommendation System — Рекомендательная сис�
 User enters preferences → frontend sends a request to the backend → recommendation engine ranks books and generates explanations → frontend displays the results.
 
 The initial scope excludes authentication and external AI APIs, prioritizing a complete recommendation workflow with clear explanations.
+
+## How to run
+### Frontend
+   cd frontend
+   npm run dev
+
+### Backend
+    cd backend
+    .\.venv\Scripts\fastapi.exe dev app/main.py
