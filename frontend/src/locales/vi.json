@@ -1,0 +1,35 @@
+{
+  "app": {
+    "name": "Hệ thống gợi ý sách",
+    "heading": "Khám phá thư viện",
+    "description": "Khám phá bộ sưu tập và tìm những cuốn sách phù hợp với sở thích của bạn."
+  },
+  "locale": {
+    "label": "Ngôn ngữ giao diện"
+  },
+  "library": {
+    "heading": "Thư viện sách",
+    "count": "Số sách hiện có: {{count}}",
+    "loading": "Đang tải sách...",
+    "empty": "Thư viện hiện chưa có sách.",
+    "error": "Không thể tải thư viện. Hãy kiểm tra kết nối và thử lại.",
+    "retry": "Thử lại",
+    "author": "Tác giả: {{author}}",
+    "pages": "Số trang: {{count}}",
+    "unknownPages": "Chưa có thông tin số trang",
+    "editionLanguage": "Ngôn ngữ phiên bản: {{language}}"
+  },
+  "languages": {
+    "en": "Tiếng Anh",
+    "ru": "Tiếng Nga",
+    "vi": "Tiếng Việt"
+  },
+  "genres": {
+    "fantasy": "Kỳ ảo",
+    "mystery": "Trinh thám",
+    "science-fiction": "Khoa học viễn tưởng",
+    "adventure": "Phiêu lưu",
+    "romance": "Lãng mạn",
+    "contemporary": "Văn học đương đại"
+  }
+}

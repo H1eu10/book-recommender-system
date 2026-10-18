@@ -229,3 +229,27 @@
 .library-heading {
   margin-bottom: 12px;
 }
+.page-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+}
+
+.language-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  color: #657086;
+  font-size: 14px;
+}
+
+.language-switcher select {
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid #cbd3e1;
+  border-radius: 8px;
+  background: #fff;
+  color: #243044;
+  font: inherit;
+}

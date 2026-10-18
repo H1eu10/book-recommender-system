@@ -1,0 +1,35 @@
+{
+  "app": {
+    "name": "Book Recommendation System",
+    "heading": "Explore the library",
+    "description": "Explore the collection and discover books that match your preferences."
+  },
+  "locale": {
+    "label": "Interface language"
+  },
+  "library": {
+    "heading": "Library collection",
+    "count": "Books available: {{count}}",
+    "loading": "Loading books...",
+    "empty": "No books are available yet.",
+    "error": "Unable to load the library. Check the connection and try again.",
+    "retry": "Try again",
+    "author": "By {{author}}",
+    "pages": "Pages: {{count}}",
+    "unknownPages": "Page count unavailable",
+    "editionLanguage": "Edition language: {{language}}"
+  },
+  "languages": {
+    "en": "English",
+    "ru": "Russian",
+    "vi": "Vietnamese"
+  },
+  "genres": {
+    "fantasy": "Fantasy",
+    "mystery": "Mystery",
+    "science-fiction": "Science fiction",
+    "adventure": "Adventure",
+    "romance": "Romance",
+    "contemporary": "Contemporary fiction"
+  }
+}

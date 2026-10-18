@@ -1,10 +1,16 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import { getBooks } from './services/books'
 import type { Book } from './types/book'
+import LanguageSwitcher from './components/LanguageSwitcher'
 import RecommendationPanel from './components/RecommendationPanel'
+
 import './App.css'
 
 function App() {
+  const { t } = useTranslation()
+
   const [books, setBooks] = useState<Book[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -24,7 +30,7 @@ function App() {
           setError(
             error instanceof Error
               ? error.message
-              : 'Something went wrong while loading books.',
+              : 'Unable to load books.',
           )
         }
       } finally {
@@ -43,60 +49,83 @@ function App() {
 
   return (
     <main className="app">
+      <div className="page-toolbar">
+        <LanguageSwitcher />
+      </div>
+
       <header className="page-header">
-        <p className="eyebrow">Book Recommendation System</p>
-        <h1>Explore the library</h1>
-        <p>
-          Explore the collection and discover books that match your preferences.
-        </p>
+        <p className="eyebrow">{t('app.name')}</p>
+        <h1>{t('app.heading')}</h1>
+        <p>{t('app.description')}</p>
       </header>
 
-      {loading && <p role="status">Loading books...</p>}
+      {loading && <p role="status">{t('library.loading')}</p>}
 
       {!loading && error && (
         <div className="error-message" role="alert">
-          <p>{error}</p>
+          <p>{t('library.error')}</p>
+
           <button
             type="button"
             onClick={() => window.location.reload()}
           >
-            Try again
+            {t('library.retry')}
           </button>
         </div>
       )}
 
       {!loading && !error && books.length === 0 && (
-        <p>No books are available yet.</p>
+        <p>{t('library.empty')}</p>
       )}
 
       {!loading && !error && books.length > 0 && (
         <>
           <RecommendationPanel books={books} />
-          <h2 className="library-heading">Library collection</h2>
+
+          <h2 className="library-heading">
+            {t('library.heading')}
+          </h2>
+
           <p className="result-count">
-            {books.length} books available
+            {t('library.count', { count: books.length })}
           </p>
 
-          <section className="book-grid" aria-label="Book collection">
+          <section
+            className="book-grid"
+            aria-label={t('library.heading')}
+          >
             {books.map((book) => (
               <article className="book-card" key={book.id}>
                 <div className="genre-list">
                   {book.genres.map((genre) => (
                     <span className="genre" key={genre}>
-                      {genre}
+                      {t(`genres.${genre}`, {
+                        defaultValue: genre,
+                      })}
                     </span>
                   ))}
                 </div>
 
                 <h2>{book.title}</h2>
-                <p className="book-author">by {book.author}</p>
-                <p className="book-description">{book.description}</p>
+
+                <p className="book-author">
+                  {t('library.author', { author: book.author })}
+                </p>
+
+                <p className="book-description">
+                  {book.description}
+                </p>
 
                 <p className="book-meta">
-                  {book.language.toUpperCase()} ·{' '}
+                  {t('library.editionLanguage', {
+                    language: t(`languages.${book.language}`, {
+                      defaultValue: book.language,
+                    }),
+                  })}
+                  {' · '}
                   {book.pages === null
-                    ? 'Page count unavailable'
-                    : `${book.pages} pages`}
+                    ? t('library.unknownPages')
+                    : t('library.pages', { count: book.pages })}
                 </p>
               </article>
             ))}
