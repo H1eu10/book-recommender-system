@@ -1,5 +1,8 @@
 from pydantic import BaseModel, Field, field_validator, model_validator
 
+class BookTranslation(BaseModel):
+    title: str
+    description: str
 
 class Book(BaseModel):
     id: str
@@ -11,6 +14,18 @@ class Book(BaseModel):
     language: str
     pages: int | None = Field(default=None, gt=0)
 
+    work_id: str | None = None
+    original_language: str | None = None
+    isbn: str | None = None
+    source_url: str | None = None
+
+    translations: dict[str, BookTranslation] = Field(
+        default_factory=dict
+    )
+
+    metadata_notes: dict[str, str] = Field(
+        default_factory=dict
+    )
 
 class RecommendationRequest(BaseModel):
     genres: list[str] = Field(default_factory=list)

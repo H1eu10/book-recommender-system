@@ -1,32 +1,373 @@
 [
   {
-    "id": "demo-001",
-    "title": "The Clockwork Library",
-    "author": "Demo Author A",
-    "genres": ["fantasy", "mystery"],
-    "tags": ["libraries", "magic", "investigation"],
-    "description": "A young librarian investigates a mysterious clock hidden inside a magical library.",
-    "language": "en",
-    "pages": 240
+    "id": "war-and-peace-ru-digital",
+    "work_id": "war-and-peace",
+    "original_language": "ru",
+    "language": "ru",
+    "title": "Война и мир",
+    "author": "Лев Толстой",
+    "genres": [
+      "historical-fiction",
+      "literary-fiction"
+    ],
+    "tags": [
+      "war",
+      "family",
+      "society",
+      "relationships"
+    ],
+    "description": "История русских семей, их отношений и общественных перемен в эпоху наполеоновских войн.",
+    "pages": null,
+    "isbn": null,
+    "source_url": "https://ru.wikisource.org/wiki/Война_и_мир_(Толстой)",
+    "translations": {
+      "en": {
+        "title": "War and Peace",
+        "description": "Russian families navigate personal relationships and social change during the Napoleonic wars."
+      },
+      "ru": {
+        "title": "Война и мир",
+        "description": "История русских семей, их отношений и общественных перемен в эпоху наполеоновских войн."
+      },
+      "vi": {
+        "title": "Chiến tranh và hòa bình",
+        "description": "Những gia đình Nga trải qua biến động xã hội và các mối quan hệ cá nhân trong thời kỳ chiến tranh Napoleon."
+      }
+    },
+    "metadata_notes": {
+      "record_scope": "Digital text reference, not a verified print edition.",
+      "description_origin": "Project-written summary; not copied publisher text.",
+      "localized_titles_status": "Display labels; do not assert a published translation or edition."
+    }
   },
   {
-    "id": "demo-002",
-    "title": "Beyond the Quiet Stars",
-    "author": "Demo Author B",
-    "genres": ["science-fiction", "adventure"],
-    "tags": ["space", "exploration", "friendship"],
-    "description": "A small research crew travels beyond familiar space and discovers an unexpected signal.",
-    "language": "en",
-    "pages": 320
+    "id": "anna-karenina-ru-digital",
+    "work_id": "anna-karenina",
+    "original_language": "ru",
+    "language": "ru",
+    "title": "Анна Каренина",
+    "author": "Лев Толстой",
+    "genres": [
+      "literary-fiction",
+      "romance"
+    ],
+    "tags": [
+      "family",
+      "relationships",
+      "society",
+      "moral-choices"
+    ],
+    "description": "Любовь, семейная жизнь и общественные ожидания определяют выбор Анны Карениной и окружающих её людей.",
+    "pages": null,
+    "isbn": null,
+    "source_url": "https://ru.wikisource.org/wiki/Анна_Каренина_(Толстой)",
+    "translations": {
+      "en": {
+        "title": "Anna Karenina",
+        "description": "Love, family life and social expectations shape the choices of Anna Karenina and the people around her."
+      },
+      "ru": {
+        "title": "Анна Каренина",
+        "description": "Любовь, семейная жизнь и общественные ожидания определяют выбор Анны Карениной и окружающих её людей."
+      },
+      "vi": {
+        "title": "Anna Karenina",
+        "description": "Tình yêu, đời sống gia đình và những kỳ vọng xã hội chi phối lựa chọn của Anna Karenina cùng những người xung quanh."
+      }
+    },
+    "metadata_notes": {
+      "record_scope": "Digital text reference, not a verified print edition.",
+      "description_origin": "Project-written summary; not copied publisher text.",
+      "localized_titles_status": "Display labels; do not assert a published translation or edition."
+    }
   },
   {
-    "id": "demo-003",
-    "title": "Letters from Willow Street",
-    "author": "Demo Author C",
-    "genres": ["romance", "contemporary"],
-    "tags": ["relationships", "small-town", "family"],
-    "description": "Two neighbors connect through a collection of letters and learn about their families.",
+    "id": "crime-and-punishment-ru-digital",
+    "work_id": "crime-and-punishment",
+    "original_language": "ru",
+    "language": "ru",
+    "title": "Преступление и наказание",
+    "author": "Фёдор Достоевский",
+    "genres": [
+      "psychological-fiction",
+      "literary-fiction"
+    ],
+    "tags": [
+      "crime",
+      "guilt",
+      "poverty",
+      "moral-choices"
+    ],
+    "description": "Бедный бывший студент совершает убийство и сталкивается с чувством вины, нравственной ответственностью и последствиями своих идей.",
+    "pages": null,
+    "isbn": null,
+    "source_url": "https://ru.wikisource.org/wiki/Преступление_и_наказание_(Достоевский)",
+    "translations": {
+      "en": {
+        "title": "Crime and Punishment",
+        "description": "An impoverished former student commits murder and confronts guilt, moral responsibility and the consequences of his ideas."
+      },
+      "ru": {
+        "title": "Преступление и наказание",
+        "description": "Бедный бывший студент совершает убийство и сталкивается с чувством вины, нравственной ответственностью и последствиями своих идей."
+      },
+      "vi": {
+        "title": "Tội ác và hình phạt",
+        "description": "Một cựu sinh viên nghèo phạm tội giết người rồi đối diện với mặc cảm tội lỗi, trách nhiệm đạo đức và hậu quả từ những tư tưởng của mình."
+      }
+    },
+    "metadata_notes": {
+      "record_scope": "Digital text reference, not a verified print edition.",
+      "description_origin": "Project-written summary; not copied publisher text.",
+      "localized_titles_status": "Display labels; do not assert a published translation or edition."
+    }
+  },
+  {
+    "id": "pride-and-prejudice-en-digital",
+    "work_id": "pride-and-prejudice",
+    "original_language": "en",
     "language": "en",
-    "pages": 190
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "genres": [
+      "romance",
+      "literary-fiction"
+    ],
+    "tags": [
+      "relationships",
+      "family",
+      "society",
+      "social-class"
+    ],
+    "description": "Elizabeth Bennet and Mr Darcy reconsider first impressions while navigating love, family expectations and social class.",
+    "pages": null,
+    "isbn": null,
+    "source_url": "https://www.gutenberg.org/ebooks/1342",
+    "translations": {
+      "en": {
+        "title": "Pride and Prejudice",
+        "description": "Elizabeth Bennet and Mr Darcy reconsider first impressions while navigating love, family expectations and social class."
+      },
+      "ru": {
+        "title": "Гордость и предубеждение",
+        "description": "Элизабет Беннет и мистер Дарси пересматривают первые впечатления друг о друге на фоне любви, семейных ожиданий и сословных различий."
+      },
+      "vi": {
+        "title": "Kiêu hãnh và định kiến",
+        "description": "Elizabeth Bennet và ngài Darcy nhìn lại những ấn tượng ban đầu giữa tình yêu, kỳ vọng gia đình và khác biệt giai cấp."
+      }
+    },
+    "metadata_notes": {
+      "record_scope": "Digital text reference, not a verified print edition.",
+      "description_origin": "Project-written summary; not copied publisher text.",
+      "localized_titles_status": "Display labels; do not assert a published translation or edition."
+    }
+  },
+  {
+    "id": "frankenstein-en-digital",
+    "work_id": "frankenstein",
+    "original_language": "en",
+    "language": "en",
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "genres": [
+      "science-fiction",
+      "horror",
+      "gothic"
+    ],
+    "tags": [
+      "science",
+      "responsibility",
+      "isolation",
+      "moral-choices"
+    ],
+    "description": "Victor Frankenstein creates a living being, raising questions about scientific ambition, responsibility and isolation.",
+    "pages": null,
+    "isbn": null,
+    "source_url": "https://www.gutenberg.org/ebooks/84",
+    "translations": {
+      "en": {
+        "title": "Frankenstein",
+        "description": "Victor Frankenstein creates a living being, raising questions about scientific ambition, responsibility and isolation."
+      },
+      "ru": {
+        "title": "Франкенштейн",
+        "description": "Виктор Франкенштейн создаёт живое существо; история ставит вопросы о научных амбициях, ответственности и одиночестве."
+      },
+      "vi": {
+        "title": "Frankenstein",
+        "description": "Victor Frankenstein tạo ra một sinh vật sống, đặt ra những câu hỏi về tham vọng khoa học, trách nhiệm và sự cô lập."
+      }
+    },
+    "metadata_notes": {
+      "record_scope": "Digital text reference, not a verified print edition.",
+      "description_origin": "Project-written summary; not copied publisher text.",
+      "localized_titles_status": "Display labels; do not assert a published translation or edition."
+    }
+  },
+  {
+    "id": "alice-in-wonderland-en-digital",
+    "work_id": "alice-in-wonderland",
+    "original_language": "en",
+    "language": "en",
+    "title": "Alice's Adventures in Wonderland",
+    "author": "Lewis Carroll",
+    "genres": [
+      "fantasy",
+      "adventure",
+      "childrens-literature"
+    ],
+    "tags": [
+      "curiosity",
+      "identity",
+      "imagination",
+      "absurdity"
+    ],
+    "description": "Alice follows a White Rabbit into a strange world where unusual encounters challenge familiar rules and her sense of identity.",
+    "pages": null,
+    "isbn": null,
+    "source_url": "https://www.gutenberg.org/ebooks/928",
+    "translations": {
+      "en": {
+        "title": "Alice's Adventures in Wonderland",
+        "description": "Alice follows a White Rabbit into a strange world where unusual encounters challenge familiar rules and her sense of identity."
+      },
+      "ru": {
+        "title": "Алиса в Стране чудес",
+        "description": "Алиса следует за Белым Кроликом в необычный мир, где странные встречи ставят под сомнение привычные правила и её представление о себе."
+      },
+      "vi": {
+        "title": "Alice ở xứ sở thần tiên",
+        "description": "Alice theo chân Thỏ Trắng đến một thế giới lạ kỳ, nơi những cuộc gặp gỡ thách thức quy tắc quen thuộc và nhận thức của cô về bản thân."
+      }
+    },
+    "metadata_notes": {
+      "record_scope": "Digital text reference, not a verified print edition.",
+      "description_origin": "Project-written summary; not copied publisher text.",
+      "localized_titles_status": "Display labels; do not assert a published translation or edition."
+    }
+  },
+  {
+    "id": "truyen-kieu-vi-digital",
+    "work_id": "truyen-kieu",
+    "original_language": "vi",
+    "language": "vi",
+    "title": "Truyện Kiều",
+    "author": "Nguyễn Du",
+    "genres": [
+      "poetry",
+      "literary-fiction"
+    ],
+    "tags": [
+      "family",
+      "sacrifice",
+      "injustice",
+      "relationships"
+    ],
+    "description": "Truyện thơ kể về cuộc đời Thúy Kiều với sự hy sinh vì gia đình, những cuộc chia ly và bất công.",
+    "pages": null,
+    "isbn": null,
+    "source_url": "https://vi.wikisource.org/wiki/Truyện_Kiều",
+    "translations": {
+      "en": {
+        "title": "The Tale of Kieu",
+        "description": "A verse narrative follows Thuy Kieu through family sacrifice, separation and injustice."
+      },
+      "ru": {
+        "title": "Сказание о Киеу",
+        "description": "Поэма рассказывает о судьбе Тхюи Киеу, её жертве ради семьи, разлуке и несправедливости."
+      },
+      "vi": {
+        "title": "Truyện Kiều",
+        "description": "Truyện thơ kể về cuộc đời Thúy Kiều với sự hy sinh vì gia đình, những cuộc chia ly và bất công."
+      }
+    },
+    "metadata_notes": {
+      "record_scope": "Digital text reference, not a verified print edition.",
+      "description_origin": "Project-written summary; not copied publisher text.",
+      "localized_titles_status": "Display labels; do not assert a published translation or edition."
+    }
+  },
+  {
+    "id": "lao-hac-vi-digital",
+    "work_id": "lao-hac",
+    "original_language": "vi",
+    "language": "vi",
+    "title": "Lão Hạc",
+    "author": "Nam Cao",
+    "genres": [
+      "short-story",
+      "literary-fiction"
+    ],
+    "tags": [
+      "poverty",
+      "family",
+      "dignity",
+      "sacrifice"
+    ],
+    "description": "Một lão nông đối diện với cảnh nghèo, nỗi thương nhớ người con xa nhà và khát vọng giữ gìn phẩm giá.",
+    "pages": null,
+    "isbn": null,
+    "source_url": "https://vi.wikisource.org/wiki/Lão_Hạc",
+    "translations": {
+      "en": {
+        "title": "Lao Hac",
+        "description": "An elderly farmer struggles with poverty, love for his absent son and the desire to preserve his dignity."
+      },
+      "ru": {
+        "title": "Лао Хак",
+        "description": "Пожилой крестьянин борется с бедностью, тоскует по сыну и стремится сохранить человеческое достоинство."
+      },
+      "vi": {
+        "title": "Lão Hạc",
+        "description": "Một lão nông đối diện với cảnh nghèo, nỗi thương nhớ người con xa nhà và khát vọng giữ gìn phẩm giá."
+      }
+    },
+    "metadata_notes": {
+      "record_scope": "Digital text reference, not a verified print edition.",
+      "description_origin": "Project-written summary; not copied publisher text.",
+      "localized_titles_status": "Display labels; do not assert a published translation or edition."
+    }
+  },
+  {
+    "id": "tat-den-vi-digital",
+    "work_id": "tat-den",
+    "original_language": "vi",
+    "language": "vi",
+    "title": "Tắt đèn",
+    "author": "Ngô Tất Tố",
+    "genres": [
+      "literary-fiction",
+      "social-realism"
+    ],
+    "tags": [
+      "poverty",
+      "family",
+      "injustice",
+      "society"
+    ],
+    "description": "Chị Dậu cố gắng bảo vệ gia đình trước gánh nặng sưu thuế và áp bức ở nông thôn Việt Nam thời thuộc địa.",
+    "pages": null,
+    "isbn": null,
+    "source_url": "https://vi.wikisource.org/wiki/Tắt_đèn",
+    "translations": {
+      "en": {
+        "title": "When the Light Is Out",
+        "description": "Chi Dau struggles to protect her family under oppressive taxation in colonial rural Vietnam."
+      },
+      "ru": {
+        "title": "Когда гаснет свет",
+        "description": "Тьи Зау пытается защитить семью от гнёта налогов в деревенском Вьетнаме колониальной эпохи."
+      },
+      "vi": {
+        "title": "Tắt đèn",
+        "description": "Chị Dậu cố gắng bảo vệ gia đình trước gánh nặng sưu thuế và áp bức ở nông thôn Việt Nam thời thuộc địa."
+      }
+    },
+    "metadata_notes": {
+      "record_scope": "Digital text reference, not a verified print edition.",
+      "description_origin": "Project-written summary; not copied publisher text.",
+      "localized_titles_status": "Display labels; do not assert a published translation or edition."
+    }
   }
 ]

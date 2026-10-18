@@ -3,6 +3,8 @@ import type { FormEvent } from 'react'
 import type { Book } from '../types/book'
 import type { RecommendationResult } from '../types/recommendation'
 import { getRecommendations } from '../services/recommendations'
+import { useTranslation } from 'react-i18next'
+import { localizeBook } from '../utils/localizeBook'
 
 interface RecommendationPanelProps {
   books: Book[]
@@ -25,6 +27,7 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [hasSubmitted, setHasSubmitted] = useState(false)
+  const { i18n } = useTranslation()
 
   const requestRef = useRef<AbortController | null>(null)
 
@@ -273,9 +276,9 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
                   Match score: {score.toFixed(2)} / 1.00
                 </p>
 
-                <h2>{book.title}</h2>
+                <h2>{localizeBook(book, i18n.resolvedLanguage).title}</h2>
                 <p className="book-author">by {book.author}</p>
-                <p className="book-description">{book.description}</p>
+                <p className="book-description">{localizeBook(book, i18n.resolvedLanguage).description}</p>
 
                 <div className="recommendation-reasons">
                   <h4>Why this book?</h4>

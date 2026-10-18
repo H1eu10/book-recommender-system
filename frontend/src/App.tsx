@@ -5,11 +5,12 @@ import { getBooks } from './services/books'
 import type { Book } from './types/book'
 import LanguageSwitcher from './components/LanguageSwitcher'
 import RecommendationPanel from './components/RecommendationPanel'
+import { localizeBook } from './utils/localizeBook'
 
 import './App.css'
 
 function App() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   const [books, setBooks] = useState<Book[]>([])
   const [loading, setLoading] = useState(true)
@@ -106,14 +107,16 @@ function App() {
                   ))}
                 </div>
 
-                <h2>{book.title}</h2>
+                <h2>
+                  {localizeBook(book, i18n.resolvedLanguage).title}
+                </h2>
 
                 <p className="book-author">
                   {t('library.author', { author: book.author })}
                 </p>
 
                 <p className="book-description">
-                  {book.description}
+                  {localizeBook(book, i18n.resolvedLanguage).description}
                 </p>
 
                 <p className="book-meta">
