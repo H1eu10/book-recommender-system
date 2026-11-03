@@ -39,7 +39,11 @@
     "childrens-literature": "Văn học thiếu nhi",
     "poetry": "Thơ",
     "short-story": "Truyện ngắn",
-    "social-realism": "Hiện thực xã hội"
+    "social-realism": "Hiện thực xã hội",
+    "drama": "Kịch",
+    "non-fiction": "Phi hư cấu",
+    "philosophy": "Triết học",
+    "psychology": "Tâm lý học"
   },
   "tags": {
     "war": "Chiến tranh",
@@ -68,5 +72,10 @@
     "exploration": "Khám phá",
     "friendship": "Tình bạn",
     "small-town": "Đời sống thị trấn nhỏ"
+  },
+    "pagination": {
+    "previous": "Trang trước",
+    "next": "Trang sau",
+    "pageInfo": "Trang {{current}} / {{total}}"
   }
 }

@@ -9,12 +9,15 @@ import { localizeBook } from './utils/localizeBook'
 
 import './App.css'
 
+const ITEMS_PER_PAGE = 15
+
 function App() {
   const { t, i18n } = useTranslation()
 
   const [books, setBooks] = useState<Book[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -47,6 +50,18 @@ function App() {
       controller.abort()
     }
   }, [])
+
+  const totalPages = Math.ceil(books.length / ITEMS_PER_PAGE)
+  const indexOfLastBook = currentPage * ITEMS_PER_PAGE
+  const indexOfFirstBook = indexOfLastBook - ITEMS_PER_PAGE
+  const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook)
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [currentPage])
+
+  const handlePrevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1))
+  const handleNextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages))
 
   return (
     <main className="app">
@@ -95,7 +110,7 @@ function App() {
             className="book-grid"
             aria-label={t('library.heading')}
           >
-            {books.map((book) => (
+            {currentBooks.map((book) => (
               <article className="book-card" key={book.id}>
                 <div className="genre-list">
                   {book.genres.map((genre) => (
@@ -133,6 +148,34 @@ function App() {
               </article>
             ))}
           </section>
+                    {totalPages > 1 && (
+            <div className="pagination">
+              <button
+                type="button"
+                onClick={handlePrevPage}
+                disabled={currentPage === 1}
+                className="pagination-button"
+              >
+                {t('pagination.previous')}
+              </button>
+              
+              <span className="pagination-info">
+                {t('pagination.pageInfo', {
+                  current: currentPage,
+                  total: totalPages,
+                })}
+              </span>
+
+              <button
+                type="button"
+                onClick={handleNextPage}
+                disabled={currentPage === totalPages}
+                className="pagination-button"
+              >
+                {t('pagination.next')}
+              </button>
+            </div>
+          )}
         </>
       )}
     </main>

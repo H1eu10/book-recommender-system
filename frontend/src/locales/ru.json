@@ -39,7 +39,11 @@
     "childrens-literature": "Детская литература",
     "poetry": "Поэзия",
     "short-story": "Рассказ",
-    "social-realism": "Социальный реализм"
+    "social-realism": "Социальный реализм",
+    "drama": "Драма",
+    "non-fiction": "Документальная проза",
+    "philosophy": "Философия",
+    "psychology": "Психология"
   },
   "tags": {
     "war": "Война",
@@ -68,5 +72,10 @@
     "exploration": "Исследования",
     "friendship": "Дружба",
     "small-town": "Жизнь маленького города"
+  },
+    "pagination": {
+    "previous": "Назад",
+    "next": "Вперед",
+    "pageInfo": "Страница {{current}} из {{total}}"
   }
 }

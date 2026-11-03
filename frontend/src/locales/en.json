@@ -39,7 +39,11 @@
     "childrens-literature": "Children's literature",
     "poetry": "Poetry",
     "short-story": "Short story",
-    "social-realism": "Social realism"
+    "social-realism": "Social realism",
+    "drama": "Drama",
+    "non-fiction": "Non-fiction",
+    "philosophy": "Philosophy",
+    "psychology": "Psychology"
   },
   "tags": {
     "war": "War",
@@ -68,5 +72,10 @@
     "exploration": "Exploration",
     "friendship": "Friendship",
     "small-town": "Small-town life"
+  },
+    "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "pageInfo": "Page {{current}} of {{total}}"
   }
 }

@@ -63,3 +63,7 @@ class RecommendationResult(BaseModel):
     book: Book
     score: float = Field(ge=0, le=1)
     reasons: list[str]
+
+class SimilarRequest(BaseModel):
+    book_id: str
+    limit: int = Field(default=10, ge=1, le=30)

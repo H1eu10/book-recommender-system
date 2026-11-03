@@ -37,11 +37,20 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
     ),
   )].filter(Boolean).sort()
 
-  const availableTags = [...new Set(
-    books.flatMap((book) =>
-      book.tags.map((tag) => tag.trim().toLowerCase()),
-    ),
-  )].filter(Boolean).sort()
+  const tagCounts = new Map<string, number>()
+  books.forEach((book) => {
+    book.tags.forEach((tag) => {
+      const cleanTag = tag.trim().toLowerCase()
+      if (cleanTag) {
+        tagCounts.set(cleanTag, (tagCounts.get(cleanTag) || 0) + 1)
+      }
+    })
+  })
+  const availableTags = Array.from(tagCounts.entries())
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 20)
+    .map(([tag]) => tag)
+    .sort()
 
   const availableLanguages = [...new Set(
     books.map((book) => book.language.trim().toLowerCase()),
@@ -146,44 +155,48 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
           <fieldset className="preference-group">
             <legend>Genres</legend>
 
-            <div className="preference-options">
-              {availableGenres.map((genre) => (
-                <label className="preference-option" key={genre}>
-                  <input
-                    type="checkbox"
-                    checked={genres.includes(genre)}
-                    onChange={() => {
-                      setGenres((current) =>
-                        toggleSelection(current, genre),
-                      )
-                      clearPreviousResults()
-                    }}
-                  />
-                  <span>{t(`genres.${genre}`, { defaultValue: genre })}</span>
-                </label>
-              ))}
-            </div>
+              <div className="tags-scroll-container">
+                <div className="preference-options">
+                  {availableGenres.map((genre) => (
+                    <label className="preference-option" key={genre}>
+                      <input
+                        type="checkbox"
+                        checked={genres.includes(genre)}
+                        onChange={() => {
+                          setGenres((current) =>
+                            toggleSelection(current, genre),
+                          )
+                          clearPreviousResults()
+                        }}
+                      />
+                      <span>{t(`genres.${genre}`, { defaultValue: genre })}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
           </fieldset>
 
           <fieldset className="preference-group">
             <legend>Topics</legend>
 
-            <div className="preference-options">
-              {availableTags.map((tag) => (
-                <label className="preference-option" key={tag}>
-                  <input
-                    type="checkbox"
-                    checked={tags.includes(tag)}
-                    onChange={() => {
-                      setTags((current) =>
-                        toggleSelection(current, tag),
-                      )
-                      clearPreviousResults()
-                    }}
-                  />
-                  <span>{t(`tags.${tag}`, { defaultValue: tag })}</span>
-                </label>
-              ))}
+            <div className="tags-scroll-container">
+              <div className="preference-options">
+                {availableTags.map((tag) => (
+                  <label className="preference-option" key={tag}>
+                    <input
+                      type="checkbox"
+                      checked={tags.includes(tag)}
+                      onChange={() => {
+                        setTags((current) =>
+                          toggleSelection(current, tag),
+                        )
+                        clearPreviousResults()
+                      }}
+                    />
+                    <span>{t(`tags.${tag}`, { defaultValue: tag })}</span>
+                  </label>
+                ))}
+              </div>
             </div>
           </fieldset>
 

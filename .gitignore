@@ -15,3 +15,12 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Python Cache
+.pytest_cache/
+.cache/
+
+# AI Model Cache
+*.bin
+*.safetensors
+*.spm
