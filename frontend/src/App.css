@@ -61,9 +61,11 @@
   font-size: 12px;
 }
 
-.book-card h2 {
+.book-card h2,
+.book-card h3 {
   margin: 20px 0 8px;
   font-size: 21px;
+  overflow-wrap: anywhere;
 }
 
 .book-author {
@@ -312,4 +314,49 @@
 .tags-scroll-container::-webkit-scrollbar-thumb {
   background-color: #cbd3e1;
   border-radius: 4px;
+}
+
+.secondary-button {
+  padding: 10px 14px;
+  border: 1px solid #cbd3e1;
+  border-radius: 8px;
+  background: #fff;
+  color: #243044;
+  font: inherit;
+  cursor: pointer;
+}
+.book-card > .secondary-button { margin-top: 16px; }
+.reset-button { margin-left: 12px; }
+.secondary-button:disabled { opacity: 0.6; cursor: wait; }
+button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible {
+  outline: 3px solid #5264b8;
+  outline-offset: 3px;
+}
+.recommendation-mode {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  border: 0;
+  padding: 0;
+  margin: 0 0 24px;
+}
+.recommendation-mode legend { margin-bottom: 12px; font-weight: 600; }
+.recommendation-mode label { display: flex; gap: 8px; align-items: center; cursor: pointer; }
+.profile-history { max-height: 180px; overflow-y: auto; padding-left: 24px; line-height: 1.8; }
+.text-button { background: none; border: 0; padding: 2px 0; color: #4858a6; font: inherit; text-align: left; text-decoration: underline; cursor: pointer; }
+.book-dialog { width: min(760px, calc(100% - 32px)); max-height: 85vh; overflow-y: auto; padding: 24px; border: 1px solid #e2e7f0; border-radius: 16px; color: #243044; }
+.book-dialog::backdrop { background: rgb(24 34 54 / 55%); }
+.book-dialog h2 { overflow-wrap: anywhere; }
+.dialog-toolbar { display: flex; justify-content: flex-end; }
+.full-description { white-space: pre-line; line-height: 1.7; }
+.book-facts { display: grid; grid-template-columns: minmax(90px, 1fr) 3fr; gap: 12px; }
+.book-facts dt { font-weight: 600; }
+.book-facts dd { margin: 0; overflow-wrap: anywhere; }
+.similar-list { line-height: 1.8; padding-left: 24px; }
+@media (max-width: 480px) {
+  .app { padding: 24px 16px; }
+  .recommendation-panel, .book-card { padding: 18px; }
+  .pagination { flex-wrap: wrap; }
+  .book-facts { grid-template-columns: 1fr; gap: 6px; }
+  .book-facts dd { margin-bottom: 10px; }
 }

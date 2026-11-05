@@ -24,3 +24,9 @@ Thumbs.db
 *.bin
 *.safetensors
 *.spm
+
+# Reproducible training outputs (checkpoints, splits and reports)
+backend/artifacts/
+
+# Local browser verification screenshots
+output/playwright/

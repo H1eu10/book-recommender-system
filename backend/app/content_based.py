@@ -4,7 +4,7 @@ Modes:
     - similar(book_id):  item-to-item ("find books like this one").
     - by_preferences(genres, tags, ...): query from user preferences.
 
-Index is cached in memory, rebuilt only when the book set changes.
+Index is cached in memory and rebuilt when book content or metadata changes.
 """
 
 from __future__ import annotations
@@ -88,7 +88,7 @@ class ContentBasedIndex:
     def by_preferences(
         self,
         genres: Sequence[str],
-        tags: Sequence[str],
+        tags: Sequence[str] = (),
         language: str | None = None,
         max_pages: int | None = None,
         limit: int = 10,
@@ -169,9 +169,9 @@ _INDEX_KEY: tuple[str, ...] | None = None
 
 
 def get_index(books: Sequence[Book]) -> ContentBasedIndex:
-    """Return cached index; rebuild only if the book id set changed."""
+    """Rebuild when book content or metadata changes, even if IDs stay the same."""
     global _INDEX, _INDEX_KEY
-    key = tuple(b.id for b in books)
+    key = tuple(b.model_dump_json() for b in books)
     if _INDEX is None or _INDEX_KEY != key:
         _INDEX = ContentBasedIndex(books)
         _INDEX_KEY = key

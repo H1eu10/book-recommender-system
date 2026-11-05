@@ -17,7 +17,12 @@
     "author": "Tác giả: {{author}}",
     "pages": "Số trang: {{count}}",
     "unknownPages": "Chưa có thông tin số trang",
-    "editionLanguage": "Ngôn ngữ phiên bản: {{language}}"
+    "editionLanguage": "Ngôn ngữ phiên bản: {{language}}",
+    "search": "Tìm sách",
+    "searchPlaceholder": "Tên sách hoặc tác giả",
+    "allGenres": "Tất cả thể loại",
+    "filteredCount": "Hiển thị {{count}} / {{total}} sách",
+    "noResults": "Không có sách phù hợp với tìm kiếm."
   },
   "languages": {
     "en": "Tiếng Anh",
@@ -71,11 +76,109 @@
     "space": "Vũ trụ",
     "exploration": "Khám phá",
     "friendship": "Tình bạn",
-    "small-town": "Đời sống thị trấn nhỏ"
+    "small-town": "Đời sống thị trấn nhỏ",
+    "adventure-stories": "Truyện phiêu lưu",
+    "bildungsromans": "Truyện trưởng thành",
+    "clergy": "Giới giáo sĩ",
+    "domestic-fiction": "Truyện đời sống gia đình",
+    "england": "Nước Anh",
+    "fantasy-fiction": "Truyện kỳ ảo",
+    "france": "Nước Pháp",
+    "gothic-fiction": "Truyện Gothic",
+    "horror-tales": "Truyện kinh dị",
+    "horror-tales-american": "Truyện kinh dị Mỹ",
+    "london-england": "Luân Đôn, Anh",
+    "love-stories": "Truyện tình yêu",
+    "man-woman-relationships": "Quan hệ tình cảm",
+    "mars-planet": "Sao Hỏa",
+    "murder": "Án mạng",
+    "paris-france": "Paris, Pháp",
+    "private-investigators": "Thám tử tư",
+    "psychological-fiction": "Truyện tâm lý",
+    "short-stories": "Truyện ngắn",
+    "war-stories": "Truyện chiến tranh",
+    "fantasy-literature": "Văn học kỳ ảo"
   },
-    "pagination": {
+  "pagination": {
     "previous": "Trang trước",
     "next": "Trang sau",
     "pageInfo": "Trang {{current}} / {{total}}"
+  },
+  "recommendation": {
+    "heading": "Tìm cuốn sách tiếp theo",
+    "description": "Chọn thể loại hoặc chủ đề yêu thích. Bạn có thể lọc thêm ngôn ngữ ấn bản và số trang.",
+    "preferences": "Sở thích của bạn",
+    "genres": "Thể loại",
+    "topics": "Chủ đề",
+    "language": "Ngôn ngữ ấn bản",
+    "anyLanguage": "Mọi ngôn ngữ",
+    "maxPages": "Số trang tối đa",
+    "noLimit": "Không giới hạn",
+    "limit": "Số kết quả",
+    "submit": "Lấy đề xuất",
+    "loading": "Đang tìm sách…",
+    "reset": "Đặt lại",
+    "empty": "Không tìm thấy sách phù hợp. Hãy đổi sở thích hoặc giảm bộ lọc.",
+    "results": "Sách đề xuất cho bạn",
+    "scoreNote": "Điểm tương đồng thể hiện mức khớp sở thích, không phải xác suất bạn sẽ thích sách.",
+    "matchScore": "Điểm tương đồng: {{score}} / 1",
+    "rankingScore": "Điểm xếp hạng: {{score}}",
+    "why": "Vì sao đề xuất sách này?",
+    "mode": "Chọn cách khám phá sách",
+    "byPreferences": "Theo sở thích",
+    "byHistory": "Theo lịch sử đọc",
+    "errors": {
+      "preferences": "Hãy chọn ít nhất một thể loại hoặc chủ đề.",
+      "pages": "Số trang tối đa phải là số nguyên dương.",
+      "limit": "Số kết quả phải từ 1 đến 20."
+    }
+  },
+  "personalized": {
+    "heading": "Đề xuất theo lịch sử đọc",
+    "demoNote": "Chọn một độc giả mô phỏng để khám phá đề xuất cá nhân hóa. Đây là dữ liệu minh họa, không phải độc giả thực.",
+    "settings": "Thiết lập độc giả",
+    "profile": "Độc giả mô phỏng",
+    "model": "Mô hình đề xuất",
+    "likeCount": "{{count}} sách đã thích",
+    "unavailable": "Chưa khả dụng",
+    "loadingProfiles": "Đang tải độc giả mô phỏng…",
+    "loadingHistory": "Đang tải lịch sử đọc…",
+    "history": "Sách độc giả này đã thích",
+    "scoreNote": "Điểm dùng để xếp thứ tự trong mô hình đã chọn; không phải xác suất và không so sánh trực tiếp giữa các mô hình.",
+    "fallback": "Hồ sơ này chưa có lịch sử được học trong mô hình đã chọn. Hệ thống đề xuất sách phổ biến.",
+    "noProfiles": "Chưa có hồ sơ độc giả mô phỏng."
+  },
+  "models": {
+    "popularity": "Độ phổ biến",
+    "itemcf": "Item-CF",
+    "ncf": "NCF",
+    "lightgcn": "LightGCN"
+  },
+  "details": {
+    "open": "Xem chi tiết",
+    "close": "Đóng",
+    "originalTitle": "Tên gốc: {{title}}",
+    "translationNote": "Tên và mô tả được dịch tự động, có thể có sai sót. Hãy đối chiếu nguồn gốc khi cần thông tin chính xác.",
+    "notAvailable": "Chưa có thông tin",
+    "pages": "Số trang",
+    "source": "Xem nguồn gốc (mở trong thẻ mới)",
+    "similar": "Tìm sách tương tự",
+    "originalMetadata": "Đọc thông tin gốc"
+  },
+  "explanations": {
+    "genres": "Khớp thể loại bạn chọn: {{values}}.",
+    "themes": "Khớp chủ đề bạn chọn: {{values}}.",
+    "shared_genres": "Có chung thể loại: {{values}}.",
+    "shared_themes": "Có chung chủ đề: {{values}}.",
+    "text_similarity": "Có từ ngữ và nội dung tương đồng trong thông tin sách.",
+    "history": "Được xếp hạng theo các mẫu học từ tương tác đọc sách.",
+    "popularity": "Phổ biến trong dữ liệu tương tác độc giả hiện có."
+  },
+  "errors": {
+    "validation": "Một số lựa chọn chưa hợp lệ. Hãy kiểm tra biểu mẫu và thử lại.",
+    "notFound": "Sách hoặc độc giả này không còn khả dụng. Hãy tải lại trang.",
+    "unavailable": "Dịch vụ hoặc mô hình hiện chưa khả dụng. Hãy thử lại sau hoặc chọn mô hình khác.",
+    "network": "Không thể kết nối. Hãy kiểm tra máy chủ ứng dụng đang chạy và thử lại.",
+    "server": "Không thể hoàn tất yêu cầu. Vui lòng thử lại."
   }
 }

@@ -4,10 +4,12 @@ import type { Book } from '../types/book'
 import type { RecommendationResult } from '../types/recommendation'
 import { getRecommendations } from '../services/recommendations'
 import { useTranslation } from 'react-i18next'
-import { localizeBook } from '../utils/localizeBook'
+import BookCard from './BookCard'
+import { errorKey } from '../services/api'
 
 interface RecommendationPanelProps {
   books: Book[]
+  onDetails: (book: Book) => void
 }
 
 function toggleSelection(values: string[], value: string): string[] {
@@ -16,7 +18,7 @@ function toggleSelection(values: string[], value: string): string[] {
     : [...values, value]
 }
 
-function RecommendationPanel({ books }: RecommendationPanelProps) {
+function RecommendationPanel({ books, onDetails }: RecommendationPanelProps) {
   const [genres, setGenres] = useState<string[]>([])
   const [tags, setTags] = useState<string[]>([])
   const [language, setLanguage] = useState('')
@@ -27,7 +29,7 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [hasSubmitted, setHasSubmitted] = useState(false)
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   const requestRef = useRef<AbortController | null>(null)
 
@@ -78,7 +80,7 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
     clearPreviousResults()
 
     if (genres.length === 0 && tags.length === 0) {
-      setError('Please select at least one genre or topic.')
+      setError('recommendation.errors.preferences')
       return
     }
 
@@ -89,7 +91,7 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
       pageLimit !== null &&
       (!Number.isInteger(pageLimit) || pageLimit <= 0)
     ) {
-      setError('Maximum pages must be a positive integer.')
+      setError('recommendation.errors.pages')
       return
     }
 
@@ -98,7 +100,7 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
       resultLimit < 1 ||
       resultLimit > 20
     ) {
-      setError('Number of results must be between 1 and 20.')
+      setError('recommendation.errors.limit')
       return
     }
 
@@ -128,9 +130,7 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
     } catch (error: unknown) {
       if (!controller.signal.aborted) {
         setError(
-          error instanceof Error
-            ? error.message
-            : 'Unable to get recommendations.',
+          errorKey(error),
         )
       }
     } finally {
@@ -142,18 +142,17 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
 
   return (
     <section className="recommendation-panel">
-      <h2>Find your next book</h2>
+      <h2>{t('recommendation.heading')}</h2>
       <p className="section-description">
-        Choose genres or topics you enjoy. Language and page count
-        are optional filters.
+        {t('recommendation.description')}
       </p>
 
       <form onSubmit={handleSubmit}>
         <fieldset className="preference-fields" disabled={loading}>
-          <legend>Your preferences</legend>
+          <legend>{t('recommendation.preferences')}</legend>
 
           <fieldset className="preference-group">
-            <legend>Genres</legend>
+            <legend>{t('recommendation.genres')}</legend>
 
               <div className="tags-scroll-container">
                 <div className="preference-options">
@@ -177,7 +176,7 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
           </fieldset>
 
           <fieldset className="preference-group">
-            <legend>Topics</legend>
+            <legend>{t('recommendation.topics')}</legend>
 
             <div className="tags-scroll-container">
               <div className="preference-options">
@@ -202,7 +201,7 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
 
           <div className="filter-grid">
             <label className="filter-field">
-              <span>Language</span>
+              <span>{t('recommendation.language')}</span>
               <select
                 value={language}
                 onChange={(event) => {
@@ -210,7 +209,7 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
                   clearPreviousResults()
                 }}
               >
-                <option value="">Any language</option>
+                <option value="">{t('recommendation.anyLanguage')}</option>
                 {availableLanguages.map((value) => (
                   <option key={value} value={value}>
                     {t(`languages.${value}`, { defaultValue: value })}
@@ -220,12 +219,12 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
             </label>
 
             <label className="filter-field">
-              <span>Maximum pages</span>
+              <span>{t('recommendation.maxPages')}</span>
               <input
                 type="number"
                 min="1"
                 step="1"
-                placeholder="No limit"
+                placeholder={t('recommendation.noLimit')}
                 value={maxPages}
                 onChange={(event) => {
                   setMaxPages(event.target.value)
@@ -235,7 +234,7 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
             </label>
 
             <label className="filter-field">
-              <span>Number of results</span>
+              <span>{t('recommendation.limit')}</span>
               <input
                 type="number"
                 min="1"
@@ -252,68 +251,42 @@ function RecommendationPanel({ books }: RecommendationPanelProps) {
           </div>
 
           <button className="primary-button" type="submit">
-            {loading ? 'Finding books...' : 'Get recommendations'}
+            {t(loading ? 'recommendation.loading' : 'recommendation.submit')}
           </button>
+          <button className="secondary-button reset-button" type="button" onClick={() => {
+            setGenres([]); setTags([]); setLanguage(''); setMaxPages(''); setLimit('5'); clearPreviousResults()
+          }}>{t('recommendation.reset')}</button>
         </fieldset>
       </form>
 
       {loading && (
-        <p role="status">Looking for books that match your preferences...</p>
+        <p role="status">{t('recommendation.loading')}</p>
       )}
 
       {error && (
         <p className="error-message" role="alert">
-          {error}
+          {t(error)}
         </p>
       )}
 
       {hasSubmitted && results.length === 0 && (
         <p role="status">
-          No matching books found. Try different preferences or less
-          restrictive filters.
+          {t('recommendation.empty')}
         </p>
       )}
 
       {hasSubmitted && results.length > 0 && (
         <section className="recommendation-results">
-          <h3>Your recommendations</h3>
+          <h3>{t('recommendation.results')}</h3>
           <p className="section-description">
-            Scores describe preference matches, not the probability
-            that you will like a book.
+            {t('recommendation.scoreNote')}
           </p>
 
           <div className="book-grid">
-            {results.map(({ book, score, reasons }) => (
-              <article className="book-card" key={book.id}>
-                <p className="match-score">
-                  Match score: {score.toFixed(2)} / 1.00
-                </p>
-
-                <h2>{localizeBook(book, i18n.resolvedLanguage).title}</h2>
-                <p className="book-author">by {book.author}</p>
-                <p className="book-description">{localizeBook(book, i18n.resolvedLanguage).description}</p>
-
-                <div className="recommendation-reasons">
-                  <h4>Why this book?</h4>
-                  <ul>
-                    {reasons.map((reason) => (
-                      <li key={reason}>{reason}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <p className="book-meta">
-                  {t('library.editionLanguage', {
-                    language: t(`languages.${book.language}`, {
-                      defaultValue: book.language,
-                    }),
-                  })}
-                  {' · '}
-                  {book.pages == null
-                    ? t('library.unknownPages')
-                    : t('library.pages', { count: book.pages })}
-                </p>
-              </article>
+            {results.map(result => (
+              <BookCard key={result.book.id} book={result.book} score={result.score}
+                explanations={result.explanations ?? [{ code: 'text_similarity', values: [] }]}
+                onDetails={onDetails} />
             ))}
           </div>
         </section>

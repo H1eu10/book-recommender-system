@@ -1,44 +1,35 @@
-import type {
-  RecommendationRequest,
-  RecommendationResult,
-} from '../types/recommendation'
+import type { RecommendationRequest, RecommendationResult, ModelStatus, ModelId, ProfileSummary, Profile, PersonalizedResponse } from '../types/recommendation'
+import { requestJson } from './api'
 
-interface ValidationIssue {
-  msg: string
-}
-
-interface ApiError {
-  detail?: string | ValidationIssue[]
-}
-
-export async function getRecommendations(
-  preferences: RecommendationRequest,
-  signal?: AbortSignal,
-): Promise<RecommendationResult[]> {
-  const response = await fetch('/api/recommendations', {
+function post<T>(url: string, body: unknown, signal?: AbortSignal) {
+  return requestJson<T>(url, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(preferences),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
     signal,
   })
+}
 
-  if (!response.ok) {
-    const body: ApiError | null = await response
-      .json()
-      .catch(() => null)
+export function getRecommendations(preferences: RecommendationRequest, signal?: AbortSignal) {
+  return post<RecommendationResult[]>('/api/recommendations/smart', preferences, signal)
+}
 
-    let message = `Unable to get recommendations (HTTP ${response.status}).`
+export function getSimilarBooks(bookId: string, signal?: AbortSignal) {
+  return post<RecommendationResult[]>('/api/recommendations/similar', { book_id: bookId, limit: 5 }, signal)
+}
 
-    if (typeof body?.detail === 'string') {
-      message = body.detail
-    } else if (Array.isArray(body?.detail)) {
-      message = body.detail.map((issue) => issue.msg).join(' ')
-    }
+export function getModels(signal?: AbortSignal) {
+  return requestJson<ModelStatus[]>('/api/models', { signal })
+}
 
-    throw new Error(message)
-  }
+export function getProfiles(signal?: AbortSignal) {
+  return requestJson<ProfileSummary[]>('/api/profiles', { signal })
+}
 
-  return response.json()
+export function getProfile(userId: string, signal?: AbortSignal) {
+  return requestJson<Profile>(`/api/profiles/${encodeURIComponent(userId)}`, { signal })
+}
+
+export function getPersonalizedRecommendations(userId: string, model: ModelId, limit: number, signal?: AbortSignal) {
+  return post<PersonalizedResponse>('/api/recommendations/personalized', { user_id: userId, model, limit }, signal)
 }

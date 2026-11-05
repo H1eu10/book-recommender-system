@@ -5,7 +5,7 @@ import { isAppLocale } from '../i18n'
 
 function LanguageSwitcher() {
   const { t, i18n } = useTranslation()
-const resolvedLanguage = i18n.resolvedLanguage ?? null
+  const resolvedLanguage = i18n.resolvedLanguage ?? null
   const locale = isAppLocale(resolvedLanguage)
     ? resolvedLanguage
     : 'en'

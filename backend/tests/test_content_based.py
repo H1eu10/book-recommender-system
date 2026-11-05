@@ -1,8 +1,6 @@
 import pytest
-from fastapi.testclient import TestClient
 
 from app.content_based import ContentBasedIndex, get_index
-from app.main import app
 from app.schemas import Book
 
 
@@ -98,19 +96,22 @@ def test_by_preferences_sorted_descending(index):
 
 # -- cache ------------------------------------------------------------
 
-def test_get_index_caches_by_id(books):
+def test_get_index_caches_unchanged_books(books):
     idx1 = get_index(books)
     idx2 = get_index(books)
     assert idx1 is idx2
 
 
+def test_get_index_rebuilds_after_content_change(books):
+    original = get_index(books)
+    changed = [book.model_copy(deep=True) for book in books]
+    changed[0].description = "An entirely different scientific astronomy manual."
+    updated = get_index(changed)
+    assert updated is not original
+    assert updated.books[0].description == changed[0].description
+
+
 # -- API integration --------------------------------------------------
-
-@pytest.fixture
-def client():
-    with TestClient(app) as test_client:
-        yield test_client
-
 
 def test_api_similar_returns_404_for_unknown(client):
     response = client.post(

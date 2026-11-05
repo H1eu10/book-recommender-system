@@ -1,13 +1,4 @@
 import pytest
-from fastapi.testclient import TestClient
-
-from app.main import app
-
-
-@pytest.fixture
-def client():
-    with TestClient(app) as test_client:
-        yield test_client
 
 
 def test_health(client):
@@ -30,7 +21,7 @@ def test_health(client):
 )
 def test_invalid_recommendation_requests(client, payload):
     response = client.post(
-        "/api/recommendations",
+        "/api/recommendations/smart",
         json=payload,
     )
 

@@ -17,7 +17,12 @@
     "author": "By {{author}}",
     "pages": "Pages: {{count}}",
     "unknownPages": "Page count unavailable",
-    "editionLanguage": "Edition language: {{language}}"
+    "editionLanguage": "Edition language: {{language}}",
+    "search": "Search books",
+    "searchPlaceholder": "Title or author",
+    "allGenres": "All genres",
+    "filteredCount": "Showing {{count}} of {{total}} books",
+    "noResults": "No books match your search."
   },
   "languages": {
     "en": "English",
@@ -71,11 +76,109 @@
     "space": "Space",
     "exploration": "Exploration",
     "friendship": "Friendship",
-    "small-town": "Small-town life"
+    "small-town": "Small-town life",
+    "adventure-stories": "Adventure stories",
+    "bildungsromans": "Coming-of-age stories",
+    "clergy": "Clergy",
+    "domestic-fiction": "Family life fiction",
+    "england": "England",
+    "fantasy-fiction": "Fantasy fiction",
+    "france": "France",
+    "gothic-fiction": "Gothic fiction",
+    "horror-tales": "Horror tales",
+    "horror-tales-american": "American horror tales",
+    "london-england": "London, England",
+    "love-stories": "Love stories",
+    "man-woman-relationships": "Romantic relationships",
+    "mars-planet": "Mars",
+    "murder": "Murder",
+    "paris-france": "Paris, France",
+    "private-investigators": "Private investigators",
+    "psychological-fiction": "Psychological fiction",
+    "short-stories": "Short stories",
+    "war-stories": "War stories",
+    "fantasy-literature": "Fantasy literature"
   },
-    "pagination": {
+  "pagination": {
     "previous": "Previous",
     "next": "Next",
     "pageInfo": "Page {{current}} of {{total}}"
+  },
+  "recommendation": {
+    "heading": "Find your next book",
+    "description": "Choose genres or topics you enjoy. Language and page count are optional filters.",
+    "preferences": "Your preferences",
+    "genres": "Genres",
+    "topics": "Topics",
+    "language": "Edition language",
+    "anyLanguage": "Any language",
+    "maxPages": "Maximum pages",
+    "noLimit": "No limit",
+    "limit": "Number of results",
+    "submit": "Get recommendations",
+    "loading": "Finding books…",
+    "reset": "Reset",
+    "empty": "No matching books found. Try different preferences or fewer filters.",
+    "results": "Your recommendations",
+    "scoreNote": "Similarity scores describe preference matches, not the probability that you will like a book.",
+    "matchScore": "Match score: {{score}} / 1",
+    "rankingScore": "Ranking score: {{score}}",
+    "why": "Why this book?",
+    "mode": "Choose how to discover books",
+    "byPreferences": "By preferences",
+    "byHistory": "By reading history",
+    "errors": {
+      "preferences": "Select at least one genre or topic.",
+      "pages": "Maximum pages must be a positive integer.",
+      "limit": "Number of results must be between 1 and 20."
+    }
+  },
+  "personalized": {
+    "heading": "Recommendations from reading history",
+    "demoNote": "Choose a simulated reader to explore personalized recommendations. These profiles are demo data, not real readers.",
+    "settings": "Reader settings",
+    "profile": "Demo reader",
+    "model": "Recommendation model",
+    "likeCount": "{{count}} liked books",
+    "unavailable": "Unavailable",
+    "loadingProfiles": "Loading demo readers…",
+    "loadingHistory": "Loading reading history…",
+    "history": "Books this reader has liked",
+    "scoreNote": "Scores rank books within the selected model. They are not probabilities and cannot be directly compared across models.",
+    "fallback": "This profile has no learned history in the selected model. Recommendations use popular books.",
+    "noProfiles": "No demo reader profiles are available."
+  },
+  "models": {
+    "popularity": "Popularity",
+    "itemcf": "Item-CF",
+    "ncf": "NCF",
+    "lightgcn": "LightGCN"
+  },
+  "details": {
+    "open": "View details",
+    "close": "Close",
+    "originalTitle": "Original title: {{title}}",
+    "translationNote": "This title and description were translated automatically and may contain errors. Check the original source for accuracy.",
+    "notAvailable": "Not available",
+    "pages": "Pages",
+    "source": "View original source (opens in a new tab)",
+    "similar": "Find similar books",
+    "originalMetadata": "Read original metadata"
+  },
+  "explanations": {
+    "genres": "Matches your genres: {{values}}.",
+    "themes": "Matches your topics: {{values}}.",
+    "shared_genres": "Shares genres: {{values}}.",
+    "shared_themes": "Shares topics: {{values}}.",
+    "text_similarity": "Similar words and content in the book metadata.",
+    "history": "Ranked using patterns learned from reading interactions.",
+    "popularity": "Popular among readers in the available interaction data."
+  },
+  "errors": {
+    "validation": "Some selections are invalid. Check the form and try again.",
+    "notFound": "This book or reader is no longer available. Refresh and try again.",
+    "unavailable": "This service or model is unavailable. Try again later or choose another model.",
+    "network": "Unable to connect. Check that the application server is running and try again.",
+    "server": "Unable to complete the request. Please try again."
   }
 }
