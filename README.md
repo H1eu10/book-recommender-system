@@ -16,7 +16,7 @@ The initial scope excludes authentication and external AI APIs, prioritizing a c
 ## How to run
 
 Use Python 3.11 and Node.js 22.20+ (22.x) or 24.12+. Install dependencies and build
-the UI as described in the [administrator guide](docs/admin_guide.md).
+the UI as described in the [administrator guide](docs/guide.md#administrator-guide).
 
 After `npm run build` in `frontend`, run the backend from `backend`:
 
@@ -45,7 +45,7 @@ use the two processes below. The API proxy targets backend port 8000.
 - English, Vietnamese and Russian UI, including errors and explanations.
 - Missing checkpoints are shown as unavailable; requests never train models.
 
-[User guide](docs/user_guide.md) · [Administrator guide](docs/admin_guide.md) ·
+[User guide](docs/guide.md#user-guide) · [Administrator guide](docs/guide.md#administrator-guide) ·
 [Application structure and API](docs/application_structure.md)
 
 ## Collaborative recommendation experiments
