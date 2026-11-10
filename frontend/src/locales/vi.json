@@ -180,5 +180,28 @@
     "unavailable": "Dịch vụ hoặc mô hình hiện chưa khả dụng. Hãy thử lại sau hoặc chọn mô hình khác.",
     "network": "Không thể kết nối. Hãy kiểm tra máy chủ ứng dụng đang chạy và thử lại.",
     "server": "Không thể hoàn tất yêu cầu. Vui lòng thử lại."
+  },
+  "home": {
+    "hero": {
+      "title": "Mở một cuốn sách, bước vào một thế giới.",
+      "description": "Tìm sách theo sở thích, khám phá những tác phẩm tương tự và hiểu vì sao mỗi cuốn sách được đề xuất.",
+      "findBooks": "Tìm sách phù hợp",
+      "exploreLibrary": "Khám phá thư viện",
+      "actionsLabel": "Lối tắt khám phá sách",
+      "note": "Khám phá theo cách của bạn. Không cần tài khoản."
+    },
+    "discovery": {
+      "preferencesDescription": " - Bắt đầu từ những thể loại và chủ đề bạn yêu thích.",
+      "historyDescription": " - Khám phá gợi ý dành cho một hồ sơ độc giả mô phỏng."
+    },
+    "stats": {
+      "title": "Một thư viện, nhiều điều để khám phá",
+      "description": "Đôi nét về những cuốn sách trong bộ sưu tập.",
+      "books": "Sách",
+      "authors": "Tên tác giả",
+      "genres": "Thể loại",
+      "languages": "Ngôn ngữ sách",
+      "note": "Thống kê trên toàn bộ danh mục. Ngôn ngữ sách là ngôn ngữ của ấn bản trong dữ liệu, không phải ngôn ngữ bản dịch giao diện."
+    }
   }
 }

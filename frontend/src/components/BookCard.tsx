@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import type { Book } from '../types/book'
 import type { Explanation } from '../types/recommendation'
 import { localizeBook } from '../utils/localizeBook'
+import BookCover from './BookCover'
 
 interface Props {
   book: Book
@@ -21,6 +22,22 @@ export default function BookCard({ book, onDetails, score, explanations, ranking
   }
   return (
     <article className="book-card">
+      <BookCover
+        id={book.id}
+        title={localized.title}
+        author={book.author}
+      />
+
+      {score !== undefined && (
+        <p className="match-score">
+          {t(
+            ranking
+              ? 'recommendation.rankingScore'
+              : 'recommendation.matchScore',
+            { score: score.toFixed(3) },
+          )}
+        </p>
+      )}
       {score !== undefined && <p className="match-score">
         {t(ranking ? 'recommendation.rankingScore' : 'recommendation.matchScore', { score: score.toFixed(3) })}
       </p>}
@@ -32,7 +49,7 @@ export default function BookCard({ book, onDetails, score, explanations, ranking
       <h3>{localized.title}</h3>
       <p className="book-author">{t('library.author', { author: book.author })}</p>
       <p className="book-description">{localized.description}</p>
-      {explanations && <div className="recommendation-reasons">
+      {explanations && explanations.length > 0 && <div className="recommendation-reasons">
         <h4>{t('recommendation.why')}</h4>
         <ul>{explanations.map((reason, index) => <li key={`${reason.code}-${index}`}>{explanationText(reason)}</li>)}</ul>
       </div>}

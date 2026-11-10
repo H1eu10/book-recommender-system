@@ -180,5 +180,28 @@
     "unavailable": "This service or model is unavailable. Try again later or choose another model.",
     "network": "Unable to connect. Check that the application server is running and try again.",
     "server": "Unable to complete the request. Please try again."
+  },
+  "home": {
+    "hero": {
+      "title": "Your next chapter starts here.",
+      "description": "Discover books that match your interests, explore similar stories, and see why each recommendation was chosen.",
+      "findBooks": "Find my next book",
+      "exploreLibrary": "Explore the library",
+      "actionsLabel": "Book discovery shortcuts",
+      "note": "Explore at your own pace. No account required."
+    },
+    "discovery": {
+      "preferencesDescription": " - Start with the genres and themes you enjoy.",
+      "historyDescription": " - Explore recommendations for a simulated reader profile."
+    },
+    "stats": {
+      "title": "A collection to explore",
+      "description": "A few numbers behind the books on our shelves.",
+      "books": "Books",
+      "authors": "Author names",
+      "genres": "Genres",
+      "languages": "Book languages",
+      "note": "Based on the full catalog. Book languages refer to the cataloged editions, not interface translations."
+    }
   }
 }

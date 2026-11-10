@@ -10,8 +10,11 @@ import BookCard from './components/BookCard'
 import BookDetails from './components/BookDetails'
 import { errorKey } from './services/api'
 import { localizeBook } from './utils/localizeBook'
+import HomeHero from './components/HomeHero'
+import LibraryStats from './components/LibraryStats'
 
 import './App.css'
+import './styles/vintage.css'
 
 const ITEMS_PER_PAGE = 15
 
@@ -85,11 +88,10 @@ function App() {
         <LanguageSwitcher />
       </div>
 
-      <header className="page-header">
-        <p className="eyebrow">{t('app.name')}</p>
-        <h1>{t('app.heading')}</h1>
-        <p>{t('app.description')}</p>
-      </header>
+      <HomeHero ready={!loading && !error && books.length > 0} />
+        {!loading && !error && books.length > 0 && (
+          <LibraryStats books={books} />
+        )}
 
       {loading && <p role="status">{t('library.loading')}</p>}
 
@@ -112,18 +114,58 @@ function App() {
 
       {!loading && !error && books.length > 0 && (
         <>
-          <fieldset className="recommendation-mode">
+          <fieldset
+            id="recommendations"
+            className="recommendation-mode"
+          >
             <legend>{t('recommendation.mode')}</legend>
-            <label><input type="radio" name="mode" checked={mode === 'preferences'} onChange={() => setMode('preferences')} />
-              {t('recommendation.byPreferences')}</label>
-            <label><input type="radio" name="mode" checked={mode === 'personalized'} onChange={() => setMode('personalized')} />
-              {t('recommendation.byHistory')}</label>
+
+            <div className="discovery-options">
+              <label className="discovery-option">
+                <input
+                  type="radio"
+                  name="mode"
+                  value="preferences"
+                  checked={mode === 'preferences'}
+                  onChange={() => setMode('preferences')}
+                />
+
+                <span className="discovery-option__content">
+                  <span className="discovery-option__heading">
+                    {t('recommendation.byPreferences')}
+                  </span>
+
+                  <span className="discovery-option__description">
+                    {t('home.discovery.preferencesDescription')}
+                  </span>
+                </span>
+              </label>
+
+              <label className="discovery-option">
+                <input
+                  type="radio"
+                  name="mode"
+                  value="personalized"
+                  checked={mode === 'personalized'}
+                  onChange={() => setMode('personalized')}
+                />
+                <span className="discovery-option__content">
+                  <span className="discovery-option__heading">
+                    {t('recommendation.byHistory')}
+                  </span>
+
+                  <span className="discovery-option__description">
+                    {t('home.discovery.historyDescription')}
+                  </span>
+                </span>
+              </label>
+            </div>
           </fieldset>
           {mode === 'preferences'
             ? <RecommendationPanel books={books} onDetails={setSelectedBook} />
             : <PersonalizedPanel books={books} onDetails={setSelectedBook} />}
 
-          <h2 className="library-heading">
+          <h2 id="library" className="library-heading">
             {t('library.heading')}
           </h2>
 
