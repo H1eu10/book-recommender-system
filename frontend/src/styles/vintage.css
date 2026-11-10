@@ -655,3 +655,123 @@ a:focus-visible {
     border-left: 0;
   }
 }
+.scroll-reveal {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 480ms ease-out,
+    transform 480ms ease-out;
+}
+
+.scroll-reveal--pending {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .book-card {
+    transition: transform 180ms ease-out;
+  }
+
+  .book-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .secondary-button,
+  .pagination-button {
+    transition:
+      background-color 160ms ease,
+      border-color 160ms ease,
+      color 160ms ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .scroll-reveal--pending {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .book-card {
+    transform: none;
+    transition: none;
+  }
+}
+.library-heading-track {
+  overflow: clip;
+  padding-block: 12px;
+  margin-bottom: 12px;
+}
+
+.library-heading-track .library-heading {
+  margin: 0;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.25;
+}
+
+.library-heading-motion {
+  display: block;
+}
+
+@keyframes library-heading-slide {
+  from {
+    opacity: 0.35;
+    transform: translateX(clamp(120px, 28vw, 360px));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports
+    (animation-timeline: view()) and
+    (animation-range: entry 0% cover 35%) {
+
+    .library-heading-track {
+      view-timeline-name: --library-heading;
+      view-timeline-axis: block;
+    }
+
+    .library-heading-motion {
+      animation: library-heading-slide linear both;
+      animation-timeline: --library-heading;
+      animation-range: entry 0% cover 35%;
+    }
+  }
+}
+.book-fade {
+  display: flex;
+  min-width: 0;
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 700ms;
+  transition-timing-function: ease-out;
+}
+
+.book-fade--pending {
+  opacity: 0;
+}
+
+.book-fade > .book-card {
+  width: 100%;
+  min-width: 0;
+  flex: 1;
+}
+
+.book-fade.book-fade--instant {
+  opacity: 1;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-fade,
+  .book-fade--pending {
+    opacity: 1;
+    transition: none;
+  }
+}

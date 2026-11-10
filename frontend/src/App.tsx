@@ -12,6 +12,8 @@ import { errorKey } from './services/api'
 import { localizeBook } from './utils/localizeBook'
 import HomeHero from './components/HomeHero'
 import LibraryStats from './components/LibraryStats'
+import ScrollReveal from './components/ScrollReveal'
+import BookFade from './components/BookFade'
 
 import './App.css'
 import './styles/vintage.css'
@@ -75,12 +77,43 @@ function App() {
   const indexOfFirstBook = indexOfLastBook - ITEMS_PER_PAGE
   const currentBooks = filteredBooks.slice(indexOfFirstBook, indexOfLastBook)
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [currentPage])
 
-  const handlePrevPage = () => setCurrentPage(Math.max(visiblePage - 1, 1))
-  const handleNextPage = () => setCurrentPage(Math.min(visiblePage + 1, totalPages))
+
+function scrollToLibrary() {
+  const heading = document.getElementById('library')
+
+  if (!heading) return
+
+  const reduceMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)',
+  ).matches
+
+  heading.scrollIntoView({
+    behavior: reduceMotion ? 'auto' : 'smooth',
+    block: 'start',
+  })
+}
+
+function changeLibraryPage(nextPage: number) {
+  const lastPage = Math.max(1, totalPages)
+  const targetPage = Math.min(
+    Math.max(nextPage, 1),
+    lastPage,
+  )
+
+  if (targetPage === visiblePage) return
+
+  setCurrentPage(targetPage)
+  scrollToLibrary()
+}
+
+const handlePrevPage = () => {
+  changeLibraryPage(visiblePage - 1)
+}
+
+const handleNextPage = () => {
+  changeLibraryPage(visiblePage + 1)
+}
 
   return (
     <main className="app">
@@ -90,7 +123,9 @@ function App() {
 
       <HomeHero ready={!loading && !error && books.length > 0} />
         {!loading && !error && books.length > 0 && (
-          <LibraryStats books={books} />
+            <ScrollReveal>
+              <LibraryStats books={books} />
+            </ScrollReveal>
         )}
 
       {loading && <p role="status">{t('library.loading')}</p>}
@@ -188,9 +223,14 @@ function App() {
             className="book-grid"
             aria-label={t('library.heading')}
           >
-            {currentBooks.map((book) => (
-              <BookCard book={book} key={book.id} onDetails={setSelectedBook} />
-            ))}
+          {currentBooks.map((book, index) => (
+            <BookFade key={book.id} index={index}>
+              <BookCard
+                book={book}
+                onDetails={setSelectedBook}
+              />
+            </BookFade>
+          ))}
           </section>
           {totalPages > 1 && (
             <div className="pagination">
