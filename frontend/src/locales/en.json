@@ -22,7 +22,15 @@
     "searchPlaceholder": "Title or author",
     "allGenres": "All genres",
     "filteredCount": "Showing {{count}} of {{total}} books",
-    "noResults": "No books match your search."
+    "noResults": "No books match your search.",
+    "sort": {
+      "label": "Sort by",
+      "default": "Default order",
+      "title": "Title A–Z",
+      "pagesAsc": "Pages: low to high",
+      "pagesDesc": "Pages: high to low"
+    }
+
   },
   "languages": {
     "en": "English",

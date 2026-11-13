@@ -29,6 +29,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1)
   const [query, setQuery] = useState('')
   const [genreFilter, setGenreFilter] = useState('')
+  const [sortBy, setSortBy] = useState<'default' | 'title' | 'pagesAsc' | 'pagesDesc'>('default')
   const [mode, setMode] = useState<'preferences' | 'personalized'>('preferences')
   const [selectedBook, setSelectedBook] = useState<Book | null>(null)
 
@@ -70,12 +71,45 @@ function App() {
         (!search || [book.title, localized.title, book.author].some(value => value.toLocaleLowerCase().includes(search)))
     })
   }, [books, query, genreFilter, i18n.resolvedLanguage])
+
+  const sortedBooks = useMemo(() => {
+    if (sortBy === 'default') {
+      return filteredBooks
+    }
+
+    const sorted = [...filteredBooks]
+
+    if (sortBy === 'title') {
+      const collator = new Intl.Collator(
+        i18n.resolvedLanguage || 'en',
+        { sensitivity: 'base', numeric: true },
+      )
+
+      return sorted.sort((a, b) =>
+        collator.compare(
+          localizeBook(a, i18n.resolvedLanguage).title,
+          localizeBook(b, i18n.resolvedLanguage).title,
+        ),
+      )
+    }
+    return sorted.sort((a, b) => {
+      const aPages = a.pages
+      const bPages = b.pages
+      if (aPages == null && bPages == null) return 0
+      if (aPages == null) return 1
+      if (bPages == null) return -1
+
+      return sortBy === 'pagesAsc'
+        ? aPages - bPages
+        : bPages - aPages
+    })
+  }, [filteredBooks, sortBy, i18n.resolvedLanguage])
   const availableGenres = [...new Set(books.flatMap(book => book.genres))].sort()
-  const totalPages = Math.ceil(filteredBooks.length / ITEMS_PER_PAGE)
+  const totalPages = Math.ceil(sortedBooks.length / ITEMS_PER_PAGE)
   const visiblePage = Math.min(currentPage, Math.max(1, totalPages))
   const indexOfLastBook = visiblePage * ITEMS_PER_PAGE
   const indexOfFirstBook = indexOfLastBook - ITEMS_PER_PAGE
-  const currentBooks = filteredBooks.slice(indexOfFirstBook, indexOfLastBook)
+  const currentBooks = sortedBooks.slice(indexOfFirstBook, indexOfLastBook)
 
 
 
@@ -215,6 +249,37 @@ const handleNextPage = () => {
                 {availableGenres.map(genre => <option key={genre} value={genre}>{t(`genres.${genre}`, { defaultValue: genre })}</option>)}
               </select>
             </label>
+            <label className="filter-field">
+              <span>{t('library.sort.label')}</span>
+
+              <select
+                value={sortBy}
+                onChange={event => {
+                  setSortBy(
+                    event.target.value as
+                      'default' | 'title' | 'pagesAsc' | 'pagesDesc',
+                  )
+                  setCurrentPage(1)
+                }}
+              >
+                <option value="default">
+                  {t('library.sort.default')}
+                </option>
+
+                <option value="title">
+                  {t('library.sort.title')}
+                </option>
+
+                <option value="pagesAsc">
+                  {t('library.sort.pagesAsc')}
+                </option>
+
+                <option value="pagesDesc">
+                  {t('library.sort.pagesDesc')}
+                </option>
+              </select>
+            </label>
+
           </div>
           <p className="result-count" role="status">{t('library.filteredCount', { count: filteredBooks.length, total: books.length })}</p>
           {!filteredBooks.length && <p>{t('library.noResults')}</p>}

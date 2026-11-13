@@ -7,6 +7,6 @@ const proxy = {
 
 export default defineConfig({
   plugins: [react()],
-  server: { proxy },
+  server: { proxy, host: '127.0.0.1' },
   preview: { proxy },
 })

@@ -22,7 +22,14 @@
     "searchPlaceholder": "Tên sách hoặc tác giả",
     "allGenres": "Tất cả thể loại",
     "filteredCount": "Hiển thị {{count}} / {{total}} sách",
-    "noResults": "Không có sách phù hợp với tìm kiếm."
+    "noResults": "Không có sách phù hợp với tìm kiếm.",
+    "sort": {
+      "label": "Sắp xếp theo",
+      "default": "Mặc định",
+      "title": "Tên sách A–Z",
+      "pagesAsc": "Số trang: ít đến nhiều",
+      "pagesDesc": "Số trang: nhiều đến ít"
+    }
   },
   "languages": {
     "en": "Tiếng Anh",
