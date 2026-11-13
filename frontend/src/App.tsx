@@ -14,6 +14,8 @@ import HomeHero from './components/HomeHero'
 import LibraryStats from './components/LibraryStats'
 import ScrollReveal from './components/ScrollReveal'
 import BookFade from './components/BookFade'
+import SiteHeader from './components/SiteHeader'
+import SiteFooter from './components/SiteFooter'
 
 import './App.css'
 import './styles/vintage.css'
@@ -150,11 +152,10 @@ const handleNextPage = () => {
 }
 
   return (
-    <main className="app">
-      <div className="page-toolbar">
-        <LanguageSwitcher />
-      </div>
+    <>
+    <SiteHeader />
 
+    <main className="app" id="home">
       <HomeHero ready={!loading && !error && books.length > 0} />
         {!loading && !error && books.length > 0 && (
             <ScrollReveal>
@@ -330,6 +331,8 @@ const handleNextPage = () => {
       {selectedBook && <BookDetails key={selectedBook.id} book={selectedBook}
         onClose={() => setSelectedBook(null)} onSelect={setSelectedBook} />}
     </main>
+    <SiteFooter />
+    </>
   )
 }
 

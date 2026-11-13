@@ -210,5 +210,25 @@
       "languages": "Ngôn ngữ sách",
       "note": "Thống kê trên toàn bộ danh mục. Ngôn ngữ sách là ngôn ngữ của ấn bản trong dữ liệu, không phải ngôn ngữ bản dịch giao diện."
     }
+  },
+  "navigation": {
+    "label": "Điều hướng chính",
+    "home": "Trang chủ",
+    "recommendations": "Gợi ý sách",
+    "library": "Thư viện",
+    "brand": "Thư viện sách",
+    "tagline": "Khám phá câu chuyện tiếp theo"
+  },
+  "footer": {
+    "description": "Khám phá những cuốn sách phù hợp với sở thích và tìm kiếm những câu chuyện mới thông qua hệ thống gợi ý thông minh.",
+    "navigationLabel": "Điều hướng cuối trang",
+    "explore": "Khám phá",
+    "academic": "Dự án học thuật",
+    "project": "ERIAC · Dự án học thuật",
+    "educationalNote": "Được phát triển phục vụ mục đích học tập",
+    "team": "Nhóm phát triển",
+    "contact": "Liên hệ & thông tin",
+    "github": "Mã nguồn GitHub"
   }
+
 }

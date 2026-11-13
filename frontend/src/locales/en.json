@@ -211,5 +211,25 @@
       "languages": "Book languages",
       "note": "Based on the full catalog. Book languages refer to the cataloged editions, not interface translations."
     }
+  },
+  "navigation": {
+    "label": "Main navigation",
+    "home": "Home",
+    "recommendations": "Recommendations",
+    "library": "Library",
+    "brand": "Book Library",
+    "tagline": "Discover your next story"
+  },
+
+  "footer": {
+    "description": "Discover books that match your interests and explore new stories through intelligent recommendations.",
+    "navigationLabel": "Footer navigation",
+    "explore": "Explore",
+    "academic": "Academic project",
+    "project": "ERIAC · Academic Project",
+    "educationalNote": "Developed for educational purposes",
+    "team": "Development team",
+    "contact": "Contact & information",
+    "github": "GitHub Repository"
   }
 }
