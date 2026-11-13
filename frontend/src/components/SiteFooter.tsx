@@ -7,11 +7,6 @@ const navigationLinks = [
   { href: '#library', key: 'navigation.library' },
 ] as const
 
-// ========================================
-// PROJECT INFORMATION
-// Replace the example values with real data.
-// ========================================
-
 const projectInfo = {
   teamName: 'МПИ-25-1-2',
 
@@ -21,7 +16,7 @@ const projectInfo = {
     'Khac Ngu Giang',
   ],
 
-  email: 'abc@example.com',
+  email: 'ngocleltt@gmail.com',
 
   github: 'https://github.com/H1eu10/book-recommender-system',
 

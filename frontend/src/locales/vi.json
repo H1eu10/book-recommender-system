@@ -109,7 +109,11 @@
   "pagination": {
     "previous": "Trang trước",
     "next": "Trang sau",
-    "pageInfo": "Trang {{current}} / {{total}}"
+    "pageInfo": "Trang {{current}} / {{total}}",
+    "navigation": "Phân trang thư viện",
+    "first": "Trang đầu",
+    "last": "Trang cuối",
+    "goToPage": "Đến trang {{page}}"
   },
   "recommendation": {
     "heading": "Tìm cuốn sách tiếp theo",

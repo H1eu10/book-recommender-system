@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { Book } from '../types/book'
 
@@ -8,6 +8,42 @@ interface Props {
 
 export default function LibraryStats({ books }: Props) {
   const { t, i18n } = useTranslation()
+
+const sectionRef = useRef<HTMLElement>(null)
+
+    useEffect(() => {
+      const section = sectionRef.current
+
+      if (
+        !section ||
+        !('IntersectionObserver' in window) ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        return
+      }
+
+      const observer = new IntersectionObserver(
+        entries => {
+          if (entries.some(entry => entry.isIntersecting)) {
+            section.classList.remove('library-stats--pending')
+            observer.disconnect()
+          }
+        },
+        {
+          threshold: 0.1,
+          rootMargin: '0px 0px -40px 0px',
+        },
+      )
+
+      section.classList.add('library-stats--pending')
+      observer.observe(section)
+
+      return () => {
+        observer.disconnect()
+        section.classList.remove('library-stats--pending')
+      }
+    }, [])
+
 
   const stats = useMemo(() => {
     const authors = new Set<string>()
@@ -43,6 +79,7 @@ export default function LibraryStats({ books }: Props) {
 
   return (
     <section
+      ref={sectionRef}
       className="library-stats"
       aria-labelledby="library-stats-heading"
     >

@@ -208,9 +208,9 @@ a:focus-visible {
   max-width: 680px;
   color: var(--v-ink);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(36px, 4.5vw, 60px);
+  font-size: clamp(40px, 4.5vw, 60px);
   font-weight: 500;
-  line-height: 1.12;
+  line-height: 1.5;
   letter-spacing: -0.025em;
   overflow-wrap: break-word;
 }
@@ -659,8 +659,8 @@ a:focus-visible {
   opacity: 1;
   transform: none;
   transition:
-    opacity 480ms ease-out,
-    transform 480ms ease-out;
+    opacity 880ms ease-out,
+    transform 880ms ease-out;
 }
 
 .scroll-reveal--pending {
@@ -670,7 +670,7 @@ a:focus-visible {
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .book-card {
-    transition: transform 180ms ease-out;
+    transition: transform 380ms ease-out;
   }
 
   .book-card:hover {
@@ -680,9 +680,9 @@ a:focus-visible {
   .secondary-button,
   .pagination-button {
     transition:
-      background-color 160ms ease,
-      border-color 160ms ease,
-      color 160ms ease;
+      background-color 260ms ease,
+      border-color 260ms ease,
+      color 260ms ease;
   }
 }
 
@@ -749,7 +749,7 @@ a:focus-visible {
   min-width: 0;
   opacity: 1;
   transition-property: opacity;
-  transition-duration: 700ms;
+  transition-duration: 900ms;
   transition-timing-function: ease-out;
 }
 
@@ -1532,7 +1532,6 @@ a:focus-visible {
   outline-offset: 4px;
 }
 
-/* Tablet */
 
 @media (max-width: 1000px) {
   .site-footer__grid {
@@ -1545,11 +1544,258 @@ a:focus-visible {
   }
 }
 
-/* Mobile */
-
 @media (max-width: 540px) {
   .site-footer__grid {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+}
+
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--v-border);
+}
+
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.pagination .pagination-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 42px;
+  min-height: 42px;
+  padding: 8px 12px;
+
+  border: 1px solid var(--v-border);
+  border-radius: 8px;
+
+  background: var(--v-surface);
+  color: var(--v-accent);
+
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.pagination .pagination-button:hover:not(:disabled) {
+  background: var(--v-surface-soft);
+  border-color: var(--v-accent);
+}
+
+.pagination .pagination-number--active,
+.pagination .pagination-number--active:hover {
+  background: var(--v-accent);
+  border-color: var(--v-accent);
+  color: #fff8e9;
+  cursor: default;
+}
+
+.pagination .pagination-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination .pagination-button:focus-visible {
+  outline: 3px solid var(--v-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    gap: 6px;
+  }
+
+  .pagination-pages {
+    gap: 4px;
+  }
+
+  .pagination .pagination-button {
+    min-width: 36px;
+    min-height: 40px;
+    padding: 6px 9px;
+    font-size: 13px;
+  }
+}
+
+.library-heading-section {
+  margin-bottom: 24px;
+}
+
+.library-heading-section .library-heading {
+  margin: 0 0 14px;
+  font-size: clamp(30px, 3.5vw, 42px);
+  font-weight: 500;
+}
+
+.library-heading-rule {
+  display: block;
+  width: 100%;
+  height: 2px;
+
+  background: linear-gradient(
+    to right,
+    var(--v-accent) 0%,
+    var(--v-accent) 35%,
+    var(--v-border) 35%,
+    var(--v-border) 100%
+  );
+
+  transform-origin: left;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-reveal--pending .library-heading-rule {
+    transform: scaleX(0);
+  }
+
+  .scroll-reveal .library-heading-rule {
+    transition: transform 650ms ease-out 120ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .library-heading-rule {
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+  .home-hero::before {
+    animation: hero-background-enter 1100ms ease-out both;
+    transform-origin: center;
+  }
+  .home-hero .eyebrow,
+  .home-hero h1,
+  .home-hero__description,
+  .home-hero__actions,
+  .home-hero__note {
+    animation: hero-content-enter 1650ms ease-out both;
+  }
+
+  .home-hero .eyebrow {
+    animation-delay: 200ms;
+  }
+
+  .home-hero h1 {
+    animation-delay: 280ms;
+  }
+
+  .home-hero__description {
+    animation-delay: 500ms;
+  }
+
+  .home-hero__actions {
+    animation-delay: 420ms;
+  }
+
+  .home-hero__note {
+    animation-delay: 540ms;
+  }
+
+  @keyframes hero-background-enter {
+    from {
+      opacity: 0.65;
+      transform: scale(1.045);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes hero-content-enter {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero::before,
+  .home-hero .eyebrow,
+  .home-hero h1,
+  .home-hero__description,
+  .home-hero__actions,
+  .home-hero__note {
+    animation: none;
+  }
+}
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .library-stats__intro,
+  .library-stats__item,
+  .library-stats__note {
+    transition:
+      opacity 1250ms ease,
+      transform 1650ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .library-stats--pending .library-stats__intro,
+  .library-stats--pending .library-stats__item,
+  .library-stats--pending .library-stats__note {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .library-stats__intro {
+    transition-delay: 0ms;
+  }
+
+  .library-stats__item:nth-child(1) {
+    transition-delay: 200ms;
+  }
+
+  .library-stats__item:nth-child(2) {
+    transition-delay: 400ms;
+  }
+
+  .library-stats__item:nth-child(3) {
+    transition-delay: 600ms;
+  }
+
+  .library-stats__item:nth-child(4) {
+    transition-delay: 800ms;
+  }
+
+  .library-stats__note {
+    transition-delay: 1000ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .library-stats__intro,
+  .library-stats__item,
+  .library-stats__note {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

@@ -113,6 +113,24 @@ function App() {
   const indexOfFirstBook = indexOfLastBook - ITEMS_PER_PAGE
   const currentBooks = sortedBooks.slice(indexOfFirstBook, indexOfLastBook)
 
+  const visiblePageNumbers = useMemo(() => {
+  const maxButtons = 5
+  const count = Math.min(maxButtons, totalPages)
+
+  const start = Math.max(
+    1,
+    Math.min(
+      visiblePage - Math.floor(count / 2),
+      totalPages - count + 1,
+    ),
+  )
+
+  return Array.from(
+    { length: count },
+    (_, index) => start + index,
+  )
+}, [visiblePage, totalPages])
+
 
 
 function scrollToLibrary() {
@@ -158,9 +176,8 @@ const handleNextPage = () => {
     <main className="app" id="home">
       <HomeHero ready={!loading && !error && books.length > 0} />
         {!loading && !error && books.length > 0 && (
-            <ScrollReveal>
-              <LibraryStats books={books} />
-            </ScrollReveal>
+              <div className="library-stats-reveal"><LibraryStats books={books} /></div>
+              
         )}
 
       {loading && <p role="status">{t('library.loading')}</p>}
@@ -231,14 +248,30 @@ const handleNextPage = () => {
               </label>
             </div>
           </fieldset>
-          {mode === 'preferences'
-            ? <RecommendationPanel books={books} onDetails={setSelectedBook} />
-            : <PersonalizedPanel books={books} onDetails={setSelectedBook} />}
-
-          <h2 id="library" className="library-heading">
-            {t('library.heading')}
-          </h2>
-
+          <ScrollReveal key={mode}>
+            {mode === 'preferences' ? (
+              <RecommendationPanel
+                books={books}
+                onDetails={setSelectedBook}
+              />
+            ) : (
+              <PersonalizedPanel
+                books={books}
+                onDetails={setSelectedBook}
+              />
+            )}
+          </ScrollReveal>
+          <div className="library-heading-section" id="library">
+            <ScrollReveal>
+              <h2 className="library-heading">
+                {t('library.heading')}
+              </h2>
+              <span
+                className="library-heading-rule"
+                aria-hidden="true"
+              />
+            </ScrollReveal>
+          </div>
           <div className="filter-grid library-filters">
             <label className="filter-field"><span>{t('library.search')}</span>
               <input type="search" value={query} placeholder={t('library.searchPlaceholder')}
@@ -298,34 +331,75 @@ const handleNextPage = () => {
             </BookFade>
           ))}
           </section>
-          {totalPages > 1 && (
-            <div className="pagination">
-              <button
-                type="button"
-                onClick={handlePrevPage}
-                disabled={visiblePage === 1}
-                className="pagination-button"
-              >
-                {t('pagination.previous')}
-              </button>
-              
-              <span className="pagination-info">
-                {t('pagination.pageInfo', {
-                  current: visiblePage,
-                  total: totalPages,
-                })}
-              </span>
+          
+    {totalPages > 1 && (
+      <nav
+        className="pagination"
+        aria-label={t('pagination.navigation')}
+      >
+        <button
+          type="button"
+          className="pagination-button"
+          onClick={() => changeLibraryPage(1)}
+          disabled={visiblePage === 1}
+          aria-label={t('pagination.first')}
+          title={t('pagination.first')}
+        >
+          «
+        </button>
 
-              <button
-                type="button"
-                onClick={handleNextPage}
-                disabled={visiblePage === totalPages}
-                className="pagination-button"
-              >
-                {t('pagination.next')}
-              </button>
-            </div>
-          )}
+        <button
+          type="button"
+          className="pagination-button"
+          onClick={handlePrevPage}
+          disabled={visiblePage === 1}
+          aria-label={t('pagination.previous')}
+          title={t('pagination.previous')}
+        >
+          ‹
+        </button>
+
+        <div className="pagination-pages">
+          {visiblePageNumbers.map(page => (
+            <button
+              key={page}
+              type="button"
+              className={`pagination-button pagination-number${
+                page === visiblePage ? ' pagination-number--active' : ''
+              }`}
+              onClick={() => changeLibraryPage(page)}
+              aria-label={t('pagination.goToPage', { page })}
+              aria-current={page === visiblePage ? 'page' : undefined}
+            >
+              {page}
+            </button>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className="pagination-button"
+          onClick={handleNextPage}
+          disabled={visiblePage === totalPages}
+          aria-label={t('pagination.next')}
+          title={t('pagination.next')}
+        >
+          ›
+        </button>
+
+        <button
+          type="button"
+          className="pagination-button"
+          onClick={() => changeLibraryPage(totalPages)}
+          disabled={visiblePage === totalPages}
+          aria-label={t('pagination.last')}
+          title={t('pagination.last')}
+        >
+          »
+        </button>
+      </nav>
+    )}
+
         </>
       )}
       {selectedBook && <BookDetails key={selectedBook.id} book={selectedBook}
