@@ -1,0 +1,149 @@
+{
+  "seed": 42,
+  "split_sha256": "068e28325ad61c183b285021f1fc7a0abe1fc3efb030c576204acba2bbc5aaba",
+  "note": "Synthetic interactions; content-profile hybrid, separate from the LightGCN benchmark.",
+  "alpha": 0.0,
+  "trials": [
+    {
+      "alpha": 0.0,
+      "validation": {
+        "precision@10": 0.05546639919759317,
+        "recall@10": 0.29796054831160124,
+        "ndcg@10": 0.16286851262244711,
+        "users_evaluated": 997,
+        "held_out_interactions": 2030,
+        "cold_item_targets_excluded": 0,
+        "users_without_warm_targets": 0
+      }
+    },
+    {
+      "alpha": 0.1,
+      "validation": {
+        "precision@10": 0.05636910732196629,
+        "recall@10": 0.3013373453694414,
+        "ndcg@10": 0.16238973575327298,
+        "users_evaluated": 997,
+        "held_out_interactions": 2030,
+        "cold_item_targets_excluded": 0,
+        "users_without_warm_targets": 0
+      }
+    },
+    {
+      "alpha": 0.2,
+      "validation": {
+        "precision@10": 0.055767301905717555,
+        "recall@10": 0.29851220327649597,
+        "ndcg@10": 0.1623450108320472,
+        "users_evaluated": 997,
+        "held_out_interactions": 2030,
+        "cold_item_targets_excluded": 0,
+        "users_without_warm_targets": 0
+      }
+    },
+    {
+      "alpha": 0.3,
+      "validation": {
+        "precision@10": 0.05506519558676068,
+        "recall@10": 0.29719157472417235,
+        "ndcg@10": 0.16000198226241422,
+        "users_evaluated": 997,
+        "held_out_interactions": 2030,
+        "cold_item_targets_excluded": 0,
+        "users_without_warm_targets": 0
+      }
+    },
+    {
+      "alpha": 0.4,
+      "validation": {
+        "precision@10": 0.05366098294884694,
+        "recall@10": 0.29401537947174844,
+        "ndcg@10": 0.1578932507618324,
+        "users_evaluated": 997,
+        "held_out_interactions": 2030,
+        "cold_item_targets_excluded": 0,
+        "users_without_warm_targets": 0
+      }
+    },
+    {
+      "alpha": 0.5,
+      "validation": {
+        "precision@10": 0.052958876629890066,
+        "recall@10": 0.2940320962888664,
+        "ndcg@10": 0.1579097545994544,
+        "users_evaluated": 997,
+        "held_out_interactions": 2030,
+        "cold_item_targets_excluded": 0,
+        "users_without_warm_targets": 0
+      }
+    },
+    {
+      "alpha": 0.6,
+      "validation": {
+        "precision@10": 0.0511534603811438,
+        "recall@10": 0.29065529923102634,
+        "ndcg@10": 0.1546775880727111,
+        "users_evaluated": 997,
+        "held_out_interactions": 2030,
+        "cold_item_targets_excluded": 0,
+        "users_without_warm_targets": 0
+      }
+    },
+    {
+      "alpha": 0.7,
+      "validation": {
+        "precision@10": 0.04804413239719189,
+        "recall@10": 0.27669675693747897,
+        "ndcg@10": 0.14765900336871468,
+        "users_evaluated": 997,
+        "held_out_interactions": 2030,
+        "cold_item_targets_excluded": 0,
+        "users_without_warm_targets": 0
+      }
+    },
+    {
+      "alpha": 0.8,
+      "validation": {
+        "precision@10": 0.04433299899699125,
+        "recall@10": 0.2577733199598796,
+        "ndcg@10": 0.13530782223720758,
+        "users_evaluated": 997,
+        "held_out_interactions": 2030,
+        "cold_item_targets_excluded": 0,
+        "users_without_warm_targets": 0
+      }
+    },
+    {
+      "alpha": 0.9,
+      "validation": {
+        "precision@10": 0.03841524573721183,
+        "recall@10": 0.21932464058843196,
+        "ndcg@10": 0.11703060347617618,
+        "users_evaluated": 997,
+        "held_out_interactions": 2030,
+        "cold_item_targets_excluded": 0,
+        "users_without_warm_targets": 0
+      }
+    },
+    {
+      "alpha": 1.0,
+      "validation": {
+        "precision@10": 0.03189568706118369,
+        "recall@10": 0.17861919090605144,
+        "ndcg@10": 0.09794157390265636,
+        "users_evaluated": 997,
+        "held_out_interactions": 2030,
+        "cold_item_targets_excluded": 0,
+        "users_without_warm_targets": 0
+      }
+    }
+  ],
+  "test": {
+    "precision@10": 0.06038114343029128,
+    "recall@10": 0.3076228686058172,
+    "ndcg@10": 0.17854515587499112,
+    "users_evaluated": 997,
+    "held_out_interactions": 2030,
+    "cold_item_targets_excluded": 0,
+    "users_without_warm_targets": 0
+  }
+}
