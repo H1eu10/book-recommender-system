@@ -1,5 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
+import mimetypes
+from pathlib import Path
 
 from app.book_service import load_books
 from app.content_based import get_index
@@ -15,7 +17,8 @@ from app.schemas import (
 from app.personalized_service import available_models, load_profiles, personalized_recommendations
 from app.book_service import PROJECT_ROOT
 
-
+mimetypes.add_type("text/javascript", ".js")
+mimetypes.add_type("text/css", ".css")
 app = FastAPI(title="Book Recommendation API")
 
 
@@ -100,6 +103,6 @@ def get_personalized_recommendations(request: PersonalizedRequest):
 
 
 # After `npm run build`, one FastAPI process can serve the existing Vite UI.
-FRONTEND_DIST = PROJECT_ROOT / "frontend" / "dist"
+FRONTEND_DIST = Path(__file__).resolve().parents[2] / "frontend" / "dist"
 if FRONTEND_DIST.is_dir():
     app.mount("/", StaticFiles(directory=FRONTEND_DIST, html=True), name="frontend")

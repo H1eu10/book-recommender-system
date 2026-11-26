@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next'
 
 import { getBooks } from './services/books'
 import type { Book } from './types/book'
-import LanguageSwitcher from './components/LanguageSwitcher'
 import RecommendationPanel from './components/RecommendationPanel'
 import PersonalizedPanel from './components/PersonalizedPanel'
 import BookCard from './components/BookCard'
