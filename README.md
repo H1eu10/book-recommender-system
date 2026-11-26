@@ -7,6 +7,8 @@ A multilingual web application for book discovery and personalized recommendatio
 
 The system combines content-based recommendation techniques with collaborative filtering and neural recommendation models. Users can discover books based on their interests, explore similar titles, or receive personalized suggestions using synthetic reading profiles.
 
+**Render:** : https://book-recommender-system-5dy2.onrender.com/
+
 ## Features
 
 - Search books by title or author.
